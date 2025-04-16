@@ -43,7 +43,7 @@ select {
     border: 2px solid rgb(91, 92, 48);
     color: rgba(192, 64, 128, 0.668);
     border-radius: 5px;
-    font-size: 1.3rem;
+    font-size: 1rem;
 }
 
 input[type="range"] {

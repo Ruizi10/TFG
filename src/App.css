@@ -5,11 +5,16 @@ html, body {
   height: 100%;
   width: 100%;
   font-family:Times, serif;
-  background-color: #1e1e1e; /* fondo oscuro */
+  background-color: #1e1e1e;
   color: white;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Asegura que el root y la app ocupen todo el espacio */
+main {
+  flex: 1;
+}
+
 #root {
   height: 100%;
   display: flex;
@@ -17,7 +22,7 @@ html, body {
   --clr-main: #3f1853;
 }
 
-/* Scroll general para navegadores WebKit (Chrome, Edge, Safari) */
+
 ::-webkit-scrollbar {
   width: 12px;
 }

@@ -5,7 +5,7 @@ const PersonalData = ({register, errors}) => {
             <div className="form-input">
                 <label>Género
                     <select {...register("genero", { required: "Campo obligatorio" })}>
-                        <option value="">Selecciona una opción</option>
+                        <option value="" disabled selected hidden>Selecciona una opción</option>
                         <option>Masculino</option>
                         <option>Femenino</option>
                     </select>
@@ -20,8 +20,6 @@ const PersonalData = ({register, errors}) => {
                         max={"34"}
                         {...register("edad", {
                             required: "Campo obligatorio",
-                            //min: {value: 12, message: "Edad mínima 18"}
-
                         })}
                     />
                 {errors.edad && <p className="error">{errors.edad.message}</p>}
