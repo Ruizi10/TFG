@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family:Times, serif;
+  background-color: #1e1e1e; /* fondo oscuro */
+  color: white;
+}
+
+/* Asegura que el root y la app ocupen todo el espacio */
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  --clr-main: #3f1853;
+}
+
+/* Scroll general para navegadores WebKit (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #8e24aa;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #aa00ff;
+}

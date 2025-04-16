@@ -1,0 +1,37 @@
+.menu {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.menu-link {
+    text-decoration: none;
+    color: rgb(157, 197, 47);
+    font-size: 1.2rem;
+}
+.menu-link:hover {
+    text-decoration: underline;
+    color: rgb(171, 192, 243);
+}
+
+.navbar {
+    padding: 1.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--clr-main);
+    border-bottom: 3px solid black;
+}
+.navbar img{
+    width: 200px;
+    border-radius: 30px;
+}
+
+.navbar-title{
+    font-size: 2.7rem; /* Puedes subirlo a 2rem o más si quieres */
+    color: white;
+    font-weight: bold;
+    margin: 0 2rem;
+}
+
