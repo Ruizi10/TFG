@@ -4,6 +4,7 @@ import Form from "./components/Form/Form";
 import "./components/Form/Form.css";
 
 import Dashboard from "./components/Dashboard/Dashboard";
+import News from "./components/News/News";
 // import "./components/Dashboard/Dashboard.css";
 
 import Navbar from "./components/Navbar/Navbar"
@@ -24,7 +25,7 @@ export default function App() {
           {/* <Route path='/' /> */}
           <Route path='/' element={<Dashboard/>}/>
           <Route path='/formulario' element={<Form/>} />
-          {/*<Route path='/News' element={<News/>} />*/}
+          <Route path='/news' element={<News/>} />
         </Routes>
       </main>
       <Footer />

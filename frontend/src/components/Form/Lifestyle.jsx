@@ -20,14 +20,14 @@ const Lifestyle = ({register, errors}) =>{
             <div className="form-input">
                 <label>
                     Hábitos alimenticios
-                    <select {...register("sueno", { required: "Campo obligatorio" })}>
+                    <select {...register("alimentacion", { required: "Campo obligatorio" })}>
                         <option value="">Selecciona</option>
                         <option value="Saludables">Saludables</option>
                         <option value="Moderados">Moderados</option>
                         <option value="No saludables">No saludables</option>
                     </select>
                 </label>
-                {errors.sueno && <p className="errors">{errors.sueno.message}</p>}
+                {errors.alimentacion && <p className="errors">{errors.alimentacion.message}</p>}
             </div>
         </fieldset>
     )

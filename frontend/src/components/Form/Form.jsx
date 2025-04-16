@@ -16,10 +16,31 @@ const Form = () => {
         formState:{errors}
     } = useForm();
 
-    const onSubmit = (data) => {
-        console.log("Datos enviados:", data);
-        alert("Evaluación enviada correctamente.");
+    const onSubmit = async (data) => {
+        try {
+            const response = await fetch("http://localhost:8000/predict", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            });
+        
+            if (!response.ok) {
+                throw new Error("Error en la respuesta del servidor");
+            }
+        
+            const result = await response.json();
+            console.log("Respuesta del backend:", result);
+            // Poner bonita la respuesta del backend 
+
+            // alert("Formulario enviado correctamente. Resultado: " + JSON.stringify(result));
+        } catch (error) {
+            console.error("Error al enviar los datos:", error);
+            alert("Hubo un error al enviar el formulario. Intenta nuevamente más tarde.");
+        }
     };
+
 
     return (
     
