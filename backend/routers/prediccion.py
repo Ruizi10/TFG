@@ -20,6 +20,6 @@ class FormularioEstudiante(BaseModel):
 
 @router.post("/predict", summary="Predecir riesgo de depresión", tags=["Predicción"])
 async def predecir_estado(formulario: FormularioEstudiante):
-    print("📥 Datos recibidos:", formulario.dict())
+    print("📥 Datos recibidos:", formulario.model_dump())
     # Aquí en el futuro podrías meter la predicción de un modelo ML
     return {"resultado": True}

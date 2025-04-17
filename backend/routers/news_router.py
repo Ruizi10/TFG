@@ -9,6 +9,7 @@ router = APIRouter()
 @router.get("/get_news", summary="Recoger información de noticias", tags=["Noticias"])
 def get_news():
     url = "https://newsapi.org/v2/everything"
+    
 
     madrid_tz = ZoneInfo("Europe/Madrid")
     yesterday = (datetime.now(madrid_tz) - timedelta(days=1)).strftime("%Y-%m-%d")

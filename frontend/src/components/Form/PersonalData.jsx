@@ -5,9 +5,9 @@ const PersonalData = ({register, errors}) => {
             <div className="form-input">
                 <label>Género
                     <select {...register("genero", { required: "Campo obligatorio" })}>
-                        <option value="" disabled selected hidden>Selecciona una opción</option>
-                        <option>Masculino</option>
-                        <option>Femenino</option>
+                        <option value="" hidden>Selecciona una opción</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Femenino">Femenino</option>
                     </select>
                 </label>
                 {errors.genero && <p className="error">{errors.genero.message}</p>}

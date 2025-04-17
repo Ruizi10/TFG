@@ -35,7 +35,7 @@ const MentalHealth = ({register, errors}) => {
                     max="5"
                     {...register("estresFinanciero", {required: "Campo obligatorio"})}
                 />
-                {errors.estresFinanciero && <p className="error">{error.estresFinanciero.message}</p>}
+                {errors.estresFinanciero && <p className="error">{errors.estresFinanciero.message}</p>}
             </div>
 
             <div className="form-input">
@@ -58,6 +58,7 @@ const MentalHealth = ({register, errors}) => {
                         No
                     </label>
                 </div>
+                {errors.antecedentes && <p className="error">{errors.antecedentes.message}</p>}
             </div>
         </fieldset>
     )

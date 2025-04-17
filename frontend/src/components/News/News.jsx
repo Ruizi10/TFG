@@ -6,6 +6,14 @@ const [articles, setArticles] = useState([]);
 const [loading, setLoading] = useState(true);
 
 useEffect(() => {
+
+    // const response = await fetch("http://localhost:8000/get_news", {
+    //     method: "GET",
+    //     headers: {
+    //         "Content-Type": "application/json",
+    //     }
+    // });
+
     fetch("http://localhost:8000/get_news")
     .then((res) => res.json())
     .then((data) => {
