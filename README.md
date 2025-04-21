@@ -81,7 +81,7 @@ http://localhost:5173
 
 ## 📬 Contacto
 
-📧 contacto@neurostat.app
+📧 myhealth@neurostat.app
 
 ---
 
