@@ -15,6 +15,7 @@ const PersonalData = ({register, errors}) => {
             <div className="form-input">
                 <label>Edad</label>
                     <input
+                        placeholder="Introduce tu edad"
                         type="number"
                         min={"18"}
                         max={"34"}

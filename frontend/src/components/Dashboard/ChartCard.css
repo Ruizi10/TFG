@@ -1,0 +1,45 @@
+.chart-card {
+    background-color: #1e1e1e;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 0 20px rgba(197, 108, 238, 0.3);
+    color: #e0e0e0;
+    text-align: center;
+    font-family: "Segoe UI", sans-serif;
+    font-size: 1rem;
+    max-width: 380px;
+    height: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 0 auto;
+    transition: transform 0.2s ease;
+}
+
+.chart-card:hover {
+    transform: translateY(-4px);
+}
+
+.chart-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: #e0d7f5;
+    border-bottom: 1px solid #555;
+    padding-bottom: 0.6rem;
+    margin-top: 0;
+}
+
+.chart-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wide-chart-card {
+    max-width: 600px;
+    min-width: 400px;
+    
+}
+
+

@@ -10,7 +10,7 @@ app = FastAPI(
     version="1.0.0",
     contact={
         "name": "NeuroStat Team",
-        "email": "contacto@neurostat.app"
+        "email": "myhealth@neurostat.app"
     }
 )
 

@@ -33,7 +33,8 @@ const AcademicHabits = ({ register, errors}) => {
 
             <div className="form-input">
                 <label>Horas de estudio por día
-                    <input 
+                    <input
+                        placeholder="Introduce las horas de estudio"
                         type="number"
                         min="0"
                         max="12"
@@ -42,7 +43,7 @@ const AcademicHabits = ({ register, errors}) => {
                         })}
                     />
                 </label>
-                {errors.presionAcademica && <p className="error">{errors.horasEstudio.message}</p>}
+                {errors.horasEstudio && <p className="error">{errors.horasEstudio.message}</p>}
             </div>
         </fieldset>
     )

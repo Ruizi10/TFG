@@ -1,3 +1,4 @@
+
 .menu {
     list-style-type: none;
     display: flex;
@@ -33,5 +34,10 @@
     color: white;
     font-weight: bold;
     margin: 0 2rem;
+    transition: transform 0.25s ease;
+    display: inline-block;
 }
 
+.navbar-title:hover{
+    transform: scale(1.2);
+}

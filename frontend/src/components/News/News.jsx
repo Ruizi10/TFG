@@ -52,4 +52,4 @@ return (
 );
 };
 
-export default NewsCards;
+export default NewsCards
