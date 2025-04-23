@@ -1,11 +1,12 @@
 .dashboard {
     padding: 2rem;
-    background-color: #121212;
-    min-height: 100vh;
+    background-color: #1e1e1e;
+    min-height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 2rem;
+    margin-bottom: 0rem;
 }
 
 .dashboard-title {

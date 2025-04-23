@@ -1,4 +1,3 @@
-
 .menu {
     list-style-type: none;
     display: flex;
@@ -9,7 +8,7 @@
 .menu-link {
     text-decoration: none;
     color: rgb(157, 197, 47);
-    font-size: 1.2rem;
+    font-size: 1.3rem;
 }
 .menu-link:hover {
     text-decoration: underline;
@@ -17,6 +16,7 @@
 }
 
 .navbar {
+    width: 100%;
     padding: 1.8rem;
     display: flex;
     justify-content: space-between;
@@ -30,7 +30,7 @@
 }
 
 .navbar-title{
-    font-size: 3rem; 
+    font-size: 5.6rem; 
     color: white;
     font-weight: bold;
     margin: 0 2rem;

@@ -1,0 +1,33 @@
+h1{
+    font-size: 2rem;
+    margin: auto;
+    padding: 40px;
+    text-align: center;
+}
+section{
+    display: flex;
+    width: 90%;
+    height: 600px;
+    margin: auto;
+}
+
+section img{
+    width: 0px;
+    flex-grow: 1;
+    object-fit: cover;
+    opacity: 0.8;
+    transition: 0.5s ease;
+}
+
+section img:hover{
+    cursor: crosshair;
+    width: 300px;
+    opacity: 1;
+    filter: contrast(120%);
+}
+
+.subtitulo {
+    max-width: 800px;
+    margin: 2rem auto;
+    line-height: 1.6;
+}
