@@ -1,8 +1,9 @@
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from routers.prediccion import router as prediccion_router
-from routers.news_router import router as news_router
+from backend.routers.prediccion import router as prediccion_router
+from backend.routers.news_router import router as news_router
+from backend.routers.estadisticas import router as estatdisticas_router
 
 app = FastAPI(
     title="🧠 NeuroStat API",
@@ -16,11 +17,12 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["http://localhost:5173"],
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST"],
     allow_headers=["*"],
 )
 
 app.include_router(prediccion_router)
 app.include_router(news_router)
+app.include_router(estatdisticas_router)

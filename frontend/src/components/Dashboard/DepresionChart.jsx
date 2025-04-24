@@ -1,6 +1,7 @@
 import ChartCard from "./ChartCard";
 import { chartColors } from "../../utils/chartColors";
 import { CHART_HEIGHT } from "../../utils/chartConfig";
+import { useEffect, useState } from "react";
 
 import {
     PieChart,
@@ -11,17 +12,36 @@ import {
     ResponsiveContainer
 } from 'recharts';
 
-
-const data = [
-    { name: 'Con Depresion', value: 35 },
-    { name: 'Sin Depresion', value: 65 }
-];
-
-
 const COLORS = [chartColors.depresion, chartColors.sinDepresion];
 
 const DepresionChart = () => {
-return (
+    // const data = [
+    //     { name: 'Con Depresion', value: 35 },
+    //     { name: 'Sin Depresion', value: 65 }
+    // ];
+
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+            const response = await fetch("http://localhost:8000/estadisticas/pieChart");
+            const result = await response.json();
+
+            // Adaptar datos al formato requerido por el gráfico
+            setData([
+                { name: "Con Depresión", value: result.conDepresion },
+                { name: "Sin Depresión", value: result.sinDepresion }
+            ]);
+            } catch (error) {
+                console.error("Error al obtener los datos:", error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    return (
         <ChartCard title="Distribución de casos de depresión">
             <ResponsiveContainer width="100%" height={CHART_HEIGHT}>
             <PieChart>
@@ -33,7 +53,7 @@ return (
                 label //valores
                 dataKey="value"
             >
-                {data.map((entry, index) => (
+                {data.map((_, index) => (
                 <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                 ))}
             </Pie>
