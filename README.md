@@ -4,7 +4,7 @@ NeuroStat es una aplicación web desarrollada con propósito de permitir la eval
 
 ---
 
-## 🚀 Características principales
+## Características principales
 
 - ✍️ Formulario anónimo de autoevaluación dividido por secciones (información personal, hábitos, salud mental...)
 - 🧠 Predicción basada en modelos de Machine Learning entrenados previamente
@@ -15,7 +15,7 @@ NeuroStat es una aplicación web desarrollada con propósito de permitir la eval
 
 ---
 
-## 🛠 Tecnologías utilizadas
+## Tecnologías utilizadas
 
 - ⚛️ React (Frontend)
 - 🎨 CSS personalizado (tema oscuro)
