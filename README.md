@@ -1,6 +1,6 @@
 # 🧠 NeuroStat - Evaluación del Bienestar Estudiantil
 
-NeuroStat es una aplicación web desarrollada como parte de un Trabajo de Fin de Grado en Ingeniería de Computadores. Su propósito es permitir la evaluación inicial de indicios de depresión en estudiantes universitarios mediante un formulario interactivo que analiza distintos factores personales, académicos, de estilo de vida y salud mental.
+NeuroStat es una aplicación web desarrollada con propósito de permitir la evaluación inicial de indicios de depresión en estudiantes universitarios mediante un formulario interactivo que analiza distintos factores personales, académicos, de estilo de vida y salud mental.
 
 ---
 
