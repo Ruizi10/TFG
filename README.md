@@ -61,7 +61,7 @@ El objetivo es detectar de forma preliminar posibles síntomas de depresión a t
 
 1. Clona el repositorio:
 ```bash
-git clone https://github.com/tuusuario/neurostat.git
+git clone https://github.com/Ruizi10/TFG.git
 cd neurostat
 ```
 2. Instala las dependencias:
