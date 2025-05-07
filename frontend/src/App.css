@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-
 html, body {
   height: 100%;
   width: 100%;
@@ -21,7 +20,6 @@ main {
   flex-direction: column;
   --clr-main: #3f1853;
 }
-
 
 ::-webkit-scrollbar {
   width: 12px;

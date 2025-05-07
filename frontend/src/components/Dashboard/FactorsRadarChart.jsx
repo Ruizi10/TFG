@@ -1,6 +1,8 @@
 import ChartCard from "./ChartCard";
 import { chartColors } from "../../utils/chartColors";
 import { CHART_HEIGHT } from "../../utils/chartConfig";
+import { useEffect, useState } from "react";
+
 import {
     RadarChart,
     PolarGrid,
@@ -44,6 +46,55 @@ const data = [
 ];
 
 const FactorsRadarChart = () => {
+    
+    //useEffect(() => {
+    //    const fetchData = async () => {
+    //        try {
+    //        const response = await fetch("http://localhost:8000/estadisticas/radioChart");
+    //        const result = await response.json();
+//
+    //        // Adaptar datos al formato del gráfico
+    //        setData([
+    //            {
+    //                factor: "Sueño",
+    //                value: result.ConDepresion,
+    //                SinDepresion: 4,
+    //            },
+    //            {
+    //                factor: "Alimentación",
+    //                ConDepresion: 2,
+    //                SinDepresion: 4.0,
+    //            },
+    //            {
+    //                factor: "Satisfacción",
+    //                ConDepresion: 1,
+    //                SinDepresion: 4,
+    //            },
+    //            {
+    //                factor: "Presión",
+    //                ConDepresion: 4,
+    //                SinDepresion: 2,
+    //            },
+    //            {
+    //                factor: "Estrés financiero",
+    //                ConDepresion: 4,
+    //                SinDepresion: 2,
+    //            },
+    //            
+    //        ]);
+    //        } catch (error) {
+    //            console.error("Error al obtener los datos de estrés financiero:", error);
+    //        }
+    //    };
+//
+    //    fetchData();
+    //}, []);
+
+
+
+
+
+
     return (
         <ChartCard title="Factores del estudiante" className="wide-chart-card">
             <ResponsiveContainer width="100%" height={CHART_HEIGHT}>

@@ -6,7 +6,7 @@ from backend.routers.news_router import router as news_router
 from backend.routers.estadisticas import router as estatdisticas_router
 
 app = FastAPI(
-    title="🧠 NeuroStat API",
+    title="NeuroStat API",
     description="API para evaluar el bienestar emocional de estudiantes y detectar indicios de depresión mediante parámetros personales, académicos y emocionales.",
     version="1.0.0",
     contact={

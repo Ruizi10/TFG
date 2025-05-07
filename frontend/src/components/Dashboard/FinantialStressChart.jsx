@@ -1,6 +1,7 @@
 import ChartCard from "./ChartCard";
 import { chartColors } from "../../utils/chartColors";
 import { CHART_HEIGHT } from "../../utils/chartConfig";
+import { useEffect, useState } from "react";
 
 import { 
     BarChart, 
@@ -22,7 +23,34 @@ const data = [
     { nivel: "5", conDepresion: 10, sinDepresion: 7 },
 ];
 
+
 const FinantialStressChart = () => {
+
+    //useEffect(() => {
+    //        const fetchData = async () => {
+    //            try {
+    //            const response = await fetch("http://localhost:8000/estadisticas/barChart");
+    //            const result = await response.json();
+    //
+    //            // Adaptar datos al del gráfico
+    //            setData([
+    //                { nivel: 1, value: result.conDepresion, value: result.sinDepresion },
+    //                { nivel: 2, value: result.conDepresion, value: result.sinDepresion },
+    //                { nivel: 3, value: result.conDepresion, value: result.sinDepresion },
+    //                { nivel: 4, value: result.conDepresion, value: result.sinDepresion },
+    //                { nivel: 5, value: result.conDepresion, value: result.sinDepresion },
+    //                
+    //            ]);
+    //            } catch (error) {
+    //                console.error("Error al obtener los datos de estrés financiero:", error);
+    //            }
+    //        };
+    //
+    //        fetchData();
+    //    }, []);
+
+
+
     return (
         <ChartCard title="Nivel de Estrés Financiero">
             <ResponsiveContainer width="100%" height={CHART_HEIGHT}>

@@ -21,11 +21,12 @@ class FormularioEstudianteCreate(BaseModel):
 
 
 @router.post("/predict", summary="Predecir riesgo de depresión", tags=["Predicción"])
+
 async def predecir_estado(formulario: FormularioEstudianteCreate, db: Session = Depends(get_db)):
     print("📥 Datos recibidos:", formulario.model_dump())
 
-    # FUNCION PARA HACER EL PREDICT
-    depresion = True
+    # FUNCION PARA EL PREDICT
+    depresion = False
 
     nuevo_estudiante = FormularioEstudiante(
         genero=formulario.genero,

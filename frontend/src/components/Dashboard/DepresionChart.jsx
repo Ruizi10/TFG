@@ -28,13 +28,13 @@ const DepresionChart = () => {
             const response = await fetch("http://localhost:8000/estadisticas/pieChart");
             const result = await response.json();
 
-            // Adaptar datos al formato requerido por el gráfico
+            // Adaptar datos al formato del gráfico
             setData([
-                { name: "Con Depresión", value: result.conDepresion },
+                { name: "Con Depresión", value: result.depresion },
                 { name: "Sin Depresión", value: result.sinDepresion }
             ]);
             } catch (error) {
-                console.error("Error al obtener los datos:", error);
+                console.error("Error al obtener los datos de depresión:", error);
             }
         };
 
@@ -44,22 +44,22 @@ const DepresionChart = () => {
     return (
         <ChartCard title="Distribución de casos de depresión">
             <ResponsiveContainer width="100%" height={CHART_HEIGHT}>
-            <PieChart>
-            <Pie
-                data={data}
-                cx="50%" //centrar gráfico
-                cy="50%"
-                outerRadius={100} //tamaño radio
-                label //valores
-                dataKey="value"
-            >
-                {data.map((_, index) => (
-                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                ))}
-            </Pie>
-            <Tooltip />
-            <Legend />
-            </PieChart>
+                <PieChart>
+                    <Pie
+                        data={data}
+                        cx="50%" //centrar gráfico
+                        cy="50%"
+                        outerRadius={85} //tamaño radio
+                        label //valores
+                        dataKey="value"
+                    >
+                        {data.map((_, index) => (
+                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                        ))}
+                    </Pie>
+                    <Tooltip />
+                    <Legend />
+                </PieChart>
             </ResponsiveContainer>
         </ChartCard>
     );

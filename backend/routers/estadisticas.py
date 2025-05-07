@@ -12,8 +12,19 @@ router = APIRouter(
 def estadisticas_depresion(db: Session = Depends(get_db)):
     con_depresion = db.query(FormularioEstudiante).filter_by(depresion=True).count()
     sin_depresion = db.query(FormularioEstudiante).filter_by(depresion=False).count()
-
     return {
-        "conDepresion": con_depresion,
+        "depresion": con_depresion,
         "sinDepresion": sin_depresion
     }
+
+#@router.get("/barChart", summary="Obtener estadísticas del nivel de estrés financiero")
+#def estat_finantial(db: Session=Depends(get_db)):
+#    return {
+#        
+#    }
+#
+#@router.get("radioChart", summary="Obtener estadísticas de los factores principales del estudiante")
+#def estat_radio(db: Session=Depends(get_db)):
+#    return{
+#
+#    }
