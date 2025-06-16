@@ -3,14 +3,20 @@ import requests
 import json
 from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo  # Para manejar zonas horarias
+from translate import Translator
 
 router = APIRouter()
+
+def translate_text(text, translator):
+    try:
+        return translator.translate(text)
+    except Exception:
+        return text  
 
 @router.get("/get_news", summary="Recoger información de noticias", tags=["Noticias"])
 def get_news():
     url = "https://newsapi.org/v2/everything"
     
-
     madrid_tz = ZoneInfo("Europe/Madrid")
     yesterday = (datetime.now(madrid_tz) - timedelta(days=1)).strftime("%Y-%m-%d")
 
@@ -23,6 +29,14 @@ def get_news():
 
     response = requests.get(url, params=params)
     data = response.json()
+    data["articles"] = data.get("articles", [])[:5]
+
+
+    translator = Translator(to_lang="es")
+
+    for article in data.get("articles", []):
+        article["title"] = translate_text(article.get("title", ""), translator)
+        article["description"] = translate_text(article.get("description", ""), translator)
 
     return data
 

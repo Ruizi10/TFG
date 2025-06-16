@@ -6,9 +6,7 @@ import AcademicHabits from "./AcademicHabits";
 import Lifestyle from "./Lifestyle";
 import MentalHealth from "./MentalHealth";
 import SubmitButton from "./SubmitButton";
-import Modal from "../Modal/Modal";
-
-
+import Modal from "../../Modal/Modal";
 
 
 const Form = () => {

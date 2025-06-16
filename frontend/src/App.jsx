@@ -1,6 +1,10 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
-import Form from "./components/Form/Form";
+import Prediction from './components/Prediction/Prediction';
+
+import Form from "./components/Prediction/Form/Form";
+
+import Chatbot from './components/Prediction/Chatbot/chatbot';
 
 import Dashboard from "./components/Dashboard/Dashboard";
 
@@ -12,8 +16,8 @@ import Navbar from "./components/Navbar/Navbar"
 
 import Footer from './components/Footer/Footer';
 
-import './App.css'
 
+import './App.css'
 
 
 export default function App() {
@@ -24,9 +28,12 @@ export default function App() {
         <Routes>
           {/* <Route path='/' /> */}
           <Route path='/' element={<Home/>}/>
-          <Route path='/formulario' element={<Form/>} />
+          <Route path='/prediction' element={<Prediction/>} />
+            <Route path='/chatbot' element={<Chatbot/>} />
+            <Route path='/formulario' element={<Form />} />
           <Route path='/news' element={<News/>} />
           <Route path='/dashboard' element={<Dashboard/>} />
+          
         </Routes>
       </main>
       <Footer />
