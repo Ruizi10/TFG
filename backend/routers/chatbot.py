@@ -8,53 +8,58 @@ router = APIRouter()
 class MensajeEntrada(BaseModel):
     mensaje: str
 
-estructura = {
-    "respuesta": "respuesta en lenguaje natural",
-    "formulario": {
-        "nombre": "nombre del estudiante",
-        "edad": "edad del estudiante"
-    }
-}
+# estructura = {
+#     "respuesta": "respuesta en lenguaje natural",
+#     "formulario": {
+#         "nombre": "nombre del estudiante",
+#         "edad": "edad del estudiante"
+#     }
+# }
 
-ejemplo = {
-    "respuesta": "Gracias por compartir eso. ¿Cuantos años tienes?",
-    "formulario": {
-        "nombre": "Diego",
-        "edad": None
-    }
-}
+# ejemplo = {
+#     "respuesta": "Gracias por compartir eso. ¿Cuantos años tienes?",
+#     "formulario": {
+#         "nombre": "Diego",
+#         "edad": None
+#     }
+# }
 
-system_prompt = (
-    "Eres un psicólogo especializado en salud mental estudiantil.\n"
-    "Tu tarea es mantener una conversación con el estudiante para identificar su nombre y edad.\n"
-    "Debes realizar preguntas útiles y empáticas, pero siempre responder en formato JSON **válido y sin texto adicional fuera del JSON**.\n\n"
+# system_prompt = (
+#     "Eres un psicólogo especializado en salud mental estudiantil.\n"
+#     "Tu tarea es mantener una conversación con el estudiante para identificar su nombre y edad.\n"
+#     "Debes realizar preguntas útiles y empáticas, pero siempre responder en formato JSON **válido y sin texto adicional fuera del JSON**.\n\n"
     
-    "Entrada esperada:\n"
-    "- Un mensaje escrito por un estudiante (por ejemplo: \"Me llamo Diego\")\n\n"
+#     "Entrada esperada:\n"
+#     "- Un mensaje escrito por un estudiante (por ejemplo: \"Me llamo Diego\")\n\n"
     
-    "Formato obligatorio de salida (estructura JSON):\n"
-    f"{json.dumps(estructura, indent=2)}\n\n"
+#     "Formato obligatorio de salida (estructura JSON):\n"
+#     f"{json.dumps(estructura, indent=2)}\n\n"
     
-    "Reglas estrictas:\n"
-    "- No incluyas saludos ni explicaciones fuera del JSON.\n"
-    "- El campo 'respuesta' debe contener un mensaje conversacional y coherente.\n"
-    "- El campo 'formulario' debe contener los datos extraídos hasta ese momento.\n"
-    "- Si no sabes algún dato, déjalo vacío o como null.\n\n"
+#     "Reglas estrictas:\n"
+#     "- No incluyas saludos ni explicaciones fuera del JSON.\n"
+#     "- El campo 'respuesta' debe contener un mensaje conversacional y coherente.\n"
+#     "- El campo 'formulario' debe contener los datos extraídos hasta ese momento.\n"
+#     "- Si no sabes algún dato, déjalo vacío o como null.\n\n"
     
-    "Ejemplo:\n"
-    "Si el estudiante dice: \"Me llamo Diego\"\n"
-    "Debes responder exactamente así:\n"
-    f"{json.dumps(ejemplo, indent=2)}"
-)
+#     "Ejemplo:\n"
+#     "Si el estudiante dice: \"Me llamo Diego\"\n"
+#     "Debes responder exactamente así:\n"
+#     f"{json.dumps(ejemplo, indent=2)}"
+# )
 
-print(50*"*")
-print(system_prompt)
-print(50*"*")
+# print(50*"*")
+# print(system_prompt)
+# print(50*"*")
 
 conversacion = [
     # { "role": "system", "content": system_prompt }
 ]
+with open("./backend/prompt.txt", "r", encoding="utf-8") as file:
+    system_prompt = file.read()
 
+# print(50*"*")
+# print(system_prompt)
+# print(50*"*")
 
 @router.post("/send_message", summary="Enviar mensaje al chatbot", tags=["Chatbot"])
 def send_message(user_message: MensajeEntrada):
