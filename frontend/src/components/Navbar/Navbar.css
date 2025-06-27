@@ -1,8 +1,51 @@
+.navbar {
+    width: 100%;
+    padding: 1.5rem 2rem;
+    background-color: var(--clr-main);
+    border-bottom: 3px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.navbar-header {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.logo {
+    width: 200px;
+    border-radius: 25px;
+}
+
+.logo-link {
+    text-decoration: none;
+}
+
+.navbar-title {
+    font-size: 5rem;
+    color: white;
+    font-weight: bold;
+    margin: 0;
+    transition: transform 0.25s ease;
+    text-align: center;
+}
+
+.navbar-title:hover {
+    transform: scale(1.25);
+}
+
 .menu {
     list-style-type: none;
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 1.5rem;
+    padding: 1rem 0 0;
+    margin: 0;
 }
 
 .menu-link {
@@ -10,34 +53,46 @@
     color: rgb(157, 197, 47);
     font-size: 1.3rem;
 }
+
 .menu-link:hover {
     text-decoration: underline;
     color: rgb(171, 192, 243);
 }
 
-.navbar {
-    width: 100%;
-    padding: 1.8rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--clr-main);
-    border-bottom: 3px solid black;
-}
-.navbar img{
-    width: 200px;
-    border-radius: 30px;
+
+@media (min-width: 1000px) {
+    .navbar {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .navbar-header {
+        justify-content: center;
+    }
+
+    .menu {
+        justify-content: flex-end;
+        padding-top: 0;
+    }
 }
 
-.navbar-title{
-    font-size: 5.6rem; 
-    color: white;
-    font-weight: bold;
-    margin: 0 2rem;
-    transition: transform 0.25s ease;
-    display: inline-block;
-}
 
-.navbar-title:hover{
-    transform: scale(1.2);
+@media (max-width: 999px) {
+    .navbar-title {
+        font-size: 2.4rem;
+    }
+
+    .menu {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .menu-link {
+        font-size: 1.1rem;
+    }
+
+    .logo {
+        width: 90px;
+    }
 }

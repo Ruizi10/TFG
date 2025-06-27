@@ -15,24 +15,19 @@ import {
 const COLORS = [chartColors.depresion, chartColors.sinDepresion];
 
 const DepresionChart = () => {
-    // const data = [
-    //     { name: 'Con Depresion', value: 35 },
-    //     { name: 'Sin Depresion', value: 65 }
-    // ];
-
     const [data, setData] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-            const response = await fetch("http://localhost:8000/estadisticas/pieChart");
-            const result = await response.json();
+                const response = await fetch("http://localhost:8000/estadisticas/pieChart");
+                const result = await response.json();
 
-            // Adaptar datos al formato del gráfico
-            setData([
-                { name: "Con Depresión", value: result.depresion },
-                { name: "Sin Depresión", value: result.sinDepresion }
-            ]);
+                const formattedData = [
+                    { name: "Con depresión", value: result.depresion },
+                    { name: "Sin depresión", value: result.sinDepresion }
+                ];
+                setData(formattedData);
             } catch (error) {
                 console.error("Error al obtener los datos de depresión:", error);
             }
@@ -51,11 +46,11 @@ const DepresionChart = () => {
                         cy="50%"
                         outerRadius={85} //tamaño radio
                         label //valores
-                        dataKey="value"
-                    >
+                        dataKey="value">
                         {data.map((_, index) => (
-                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                         ))}
+                        
                     </Pie>
                     <Tooltip />
                     <Legend />

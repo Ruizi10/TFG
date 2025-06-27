@@ -1,8 +1,10 @@
-import DepresionChart from './DepresionChart';
-import FinantialStressChart from './FinantialStressChart';
-import FactorsRadarChart from './FactorsRadarChart';
+import DepresionChart from './DepresionPieChart';
+import GenderBarChart from './GenderBarChart';
+import AcademicPressureChart from './AcademicPressureChart';
 
 import "./Dashboard.css"
+import SatisfactionChart from './SatisfactionChart';
+
 
 
 const Dashboard = () => {
@@ -11,8 +13,9 @@ const Dashboard = () => {
             <h2 className='dashboard-title'>Gráficos de interés</h2>
             <div className="chart-grid">
                 <DepresionChart />
-                <FinantialStressChart />
-                <FactorsRadarChart />
+                <GenderBarChart />
+                <AcademicPressureChart />
+                <SatisfactionChart />
                 {/* Más gráficos a futuro*/}
             </div>
         </div>
