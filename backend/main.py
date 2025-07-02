@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from backend.routers.prediccion import router as prediccion_router
 from backend.routers.news_router import router as news_router
-from backend.routers.estadisticas import router as estatdisticas_router
+from backend.routers.estadisticas import router as estadisticas_router
 from backend.routers.chatbot import router as chatbot
 
 app = FastAPI(
@@ -26,5 +26,5 @@ app.add_middleware(
 
 app.include_router(prediccion_router)
 app.include_router(news_router)
-app.include_router(estatdisticas_router)
+app.include_router(estadisticas_router)
 app.include_router(chatbot)

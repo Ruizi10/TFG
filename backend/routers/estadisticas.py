@@ -61,3 +61,31 @@ def estadisticas_satisfaccion(db:Session = Depends(get_db)):
         })
     return data
 
+@router.get("/kpi", summary="Obtener indicadores clave de rendimiento (KPIs)")
+def obtener_kpis(db: Session = Depends(get_db)):
+    total_usuarios = db.query(FormularioEstudiante).count()
+    if total_usuarios == 0:
+        return {
+            "totalUsuarios": 0,
+            "porcentajeDepresion": 0,
+            "satisfaccionPromedio": 0,
+            "HorasEstudioPromedio": 0,
+            "EstresPromedio": 0,
+        }
+    
+    total_depresion = db.query(FormularioEstudiante).filter_by(depresion=True).count()
+    promedio_satisfaccion = db.query(FormularioEstudiante.satisfaccionEstudios).all()
+    suma_satisfaccion = sum(s.satisfaccionEstudios for s in promedio_satisfaccion)
+    promedio = suma_satisfaccion / total_usuarios
+
+    horas_estudio = db.query(FormularioEstudiante.horasEstudio).all()
+    estres_financiero = db.query(FormularioEstudiante.estresFinanciero).all()
+    promedio_horas_estudio = sum(h.horasEstudio for h in horas_estudio) / total_usuarios
+    estres_promedio = sum(e.estresFinanciero for e in estres_financiero) / total_usuarios
+    return {
+        "totalUsuarios": total_usuarios,
+        "porcentajeDepresion": round((total_depresion / total_usuarios) * 100, 2),
+        "satisfaccionPromedio": round(promedio, 2),
+        "HorasEstudioPromedio": round(promedio_horas_estudio, 2),
+        "EstresPromedio": round(estres_promedio, 2),
+    }
