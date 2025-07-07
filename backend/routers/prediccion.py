@@ -10,6 +10,7 @@ router = APIRouter()
 
 modelo = joblib.load("./backend/modelo_logistico.pkl")
 
+# Modelo de datos para el formulario de estudiante define los campos esperados
 class FormularioEstudianteCreate(BaseModel):
     genero: str
     edad: str
@@ -26,8 +27,9 @@ class FormularioEstudianteCreate(BaseModel):
 @router.post("/predict", summary="Predecir riesgo de depresión", tags=["Predicción"])
 
 async def predecir_estado(formulario: FormularioEstudianteCreate, db: Session = Depends(get_db)):
-    print("📥 Datos recibidos:", formulario.model_dump())
+    print("Datos recibidos:", formulario.model_dump())
 
+    # Convertir los datos del formulario a un diccionario y mapear los valores necesarios
     data_dict = {
         "genero": formulario.genero,
         "edad": int(formulario.edad),
@@ -41,9 +43,11 @@ async def predecir_estado(formulario: FormularioEstudianteCreate, db: Session = 
         "antecedentes": 1 if formulario.antecedentes == "Sí" else 0,
     }
 
+    # Convertir el diccionario a DataFrame y realizar la predicción
     df = pd.DataFrame([data_dict])
     depresion = bool(predict(df))
 
+    # Crear un nuevo registro en la base de datos   
     nuevo_estudiante = FormularioEstudiante(
         **data_dict,
         depresion=depresion

@@ -77,3 +77,42 @@
     text-align: left;
     color: #ccc;
 }
+
+.chat-history {
+    max-height: 400px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+    padding: 0.5rem;
+}
+
+.chat-message {
+    padding: 0.8rem 1rem;
+    border-radius: 16px;
+    max-width: 75%;
+    font-size: 1rem;
+    line-height: 1.4;
+    color: #f1f1f1;
+    word-wrap: break-word;
+}
+
+.chat-message.user {
+    align-self: flex-end;
+    background-color: #7e57c2;
+    text-align: right;
+}
+
+.chat-message.bot {
+    align-self: flex-start;
+    background-color: #2e2e2e;
+    border: 1px solid #b388ff;
+    text-align: left;
+}
+
+.chat-input-row {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}

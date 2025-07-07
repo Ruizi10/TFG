@@ -3,12 +3,18 @@ import './ChatBot.css';
 
 function ChatBot() {
   const [mensaje, setMensaje] = useState('');
-  const [respuesta, setRespuesta] = useState('');
+  const [chat, setChat] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const enviarMensaje = async () => {
     if (!mensaje.trim()) return;
+
+    // Añadir mensaje del usuario al chat
+    const newChat = [...chat, { sender: 'user', text: mensaje }];
+    setChat(newChat);
+    setMensaje('');
     setLoading(true);
+
     try {
       const res = await fetch('http://localhost:8000/send_message', {
         method: 'POST',
@@ -16,11 +22,11 @@ function ChatBot() {
         body: JSON.stringify({ mensaje }),
       });
 
-      if (!res.ok) throw new Error('Error al contactar con el servidor');
       const data = await res.json();
-      setRespuesta(data);
+
+      setChat([...newChat, { sender: 'bot', text: data }]);
     } catch {
-      setRespuesta('Error al contactar con el modelo.');
+      setChat([...newChat, { sender: 'bot', text: 'Error al contactar con el modelo.' }]);
     }
     setLoading(false);
   };
@@ -28,29 +34,34 @@ function ChatBot() {
   return (
     <div className="chatbot-container">
       <div className="chatbot-box">
-        
         <img src="/ChatBot.png" alt="Neurix Avatar" className="chatbot-avatar" />
         <h2 className="chatbot-title">Hola, soy <span>Neurix</span></h2>
         <p className="chatbot-subtitle">¡Estoy aquí para ayudarte! Dime como te encuentras.</p>
 
-        <textarea
-          className="chatbot-input"
-          value={mensaje}
-          onChange={(e) => setMensaje(e.target.value)}
-          placeholder="Escribe tu mensaje aquí..."
-        />
+        <div className="chat-history">
+          {chat.map((msg, i) => (
+            <div key={i} className={`chat-message ${msg.sender}`}>
+              <p>{msg.text}</p>
+            </div>
+          ))}
+          {loading && (
+            <div className="chat-message bot">
+              <p>Escribiendo...</p>
+            </div>
+          )}
+        </div>
 
-        <button className="chatbot-button" onClick={enviarMensaje} disabled={loading}>
-          {loading ? 'Cargando...' : 'Enviar'}
-        </button>
-
-        {respuesta && (
-          <div className="chatbot-response">
-            <strong>Neurix:</strong>
-            <p>{respuesta}</p>
-          </div>
-        )}
-
+        <div className="chat-input-row">
+          <textarea
+            className="chatbot-input"
+            value={mensaje}
+            onChange={(e) => setMensaje(e.target.value)}
+            placeholder="Escribe tu mensaje aquí..."
+          />
+          <button className="chatbot-button" onClick={enviarMensaje} disabled={loading}>
+            Enviar
+          </button>
+        </div>
       </div>
     </div>
   );

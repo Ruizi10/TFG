@@ -18,10 +18,10 @@ def get_news():
     url = "https://newsapi.org/v2/everything"
     
     madrid_tz = ZoneInfo("Europe/Madrid")
-    yesterday = (datetime.now(madrid_tz) - timedelta(days=1)).strftime("%Y-%m-%d")
+    yesterday = (datetime.now(madrid_tz) - timedelta(days=1)).strftime("%Y-%m-%d") # Formato YYYY-MM-DD
 
     params = {
-        "q": "Depresión",
+        "q": "Depresión, salud mental",
         "from": yesterday,
         "sortBy": "popularity",
         "apiKey": "1e2f0e0201f5466e9a03035d6ef0457e"
@@ -29,7 +29,7 @@ def get_news():
 
     response = requests.get(url, params=params)
     data = response.json()
-    data["articles"] = data.get("articles", [])[:5]
+    data["articles"] = data.get("articles", [])[:10]
 
 
     # translator = Translator(to_lang="es")
