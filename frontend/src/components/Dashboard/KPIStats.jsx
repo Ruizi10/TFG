@@ -35,15 +35,15 @@ const KPIStats = () => {
                 <CountUp className="count" end={stats.porcentajeDepresion} duration={2} decimals={1} suffix="%" />
             </div>
             <div className="kpi-card">
-                <h3>Satisfacción en estudios</h3>
+                <h3>Media de Satisfacción en estudios</h3>
                 <CountUp className="count" end={stats.satisfaccionPromedio} duration={2} decimals={1} />
             </div>
             <div className="kpi-card">
-                <h3>Horas de estudio</h3>
+                <h3>Media de Horas de estudio</h3>
                 <CountUp className="count" end={stats.HorasEstudioPromedio} duration={2} decimals={1} />
             </div>
             <div className="kpi-card">
-                <h3>Estrés financiero</h3>
+                <h3>Media de Estrés financiero</h3>
                 <CountUp className="count" end={stats.EstresPromedio} duration={2} decimals={1} />
             </div>
         </div>
