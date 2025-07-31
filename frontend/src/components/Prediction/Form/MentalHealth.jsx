@@ -39,7 +39,7 @@ const MentalHealth = ({register, errors}) => {
             </div>
 
             <div className="form-input">
-                <label>Antedentes familiares de enferemedades mentales</label>
+                <label>¿Alguno de tus familiares ha sido diagnosticado con alguna enfermedad mental?</label>
                 <div className="radio-group">
                     <label className="radio-option">
                         <input

@@ -18,7 +18,7 @@ def get_news():
     url = "https://newsapi.org/v2/everything"
     
     madrid_tz = ZoneInfo("Europe/Madrid")
-    yesterday = (datetime.now(madrid_tz) - timedelta(days=4)).strftime("%Y-%m-%d") # Formato YYYY-MM-DD
+    yesterday = (datetime.now(madrid_tz) - timedelta(days=30)).strftime("%Y-%m-%d") # Formato YYYY-MM-DD
 
     params = {
         "q": "Depresión, salud mental",

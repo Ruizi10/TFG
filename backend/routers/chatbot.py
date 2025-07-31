@@ -7,59 +7,94 @@ import re
 router = APIRouter()
 
 # Cargar el prompt desde archivo
-with open("./backend/prompt.txt", "r", encoding="utf-8") as file:
-    system_prompt = file.read()
+# with open("./backend/prompt.txt", "r", encoding="utf-8") as file:
+#     system_prompt = file.read()
 
 # Endpoint de la API de Ollama
 OLLAMA_URL = "http://localhost:11434/api/generate"
 
 # Historial de conversación
 conversacion = [
-    # { "role": "system", "content": system_prompt }
+    { "role": "assitant", "content": "Dime tu nombre" }
 ]
 
 # Modelo de entrada para el mensaje del usuario
 class MensajeEntrada(BaseModel):
     mensaje: str
 
-    
+faltantes = ["edad", "genero", "presionAcademica", "satisfaccionEstudios", "horasEstudio", "sueno", "alimentacion", "suicidio", "estresFinanciero", "antecedentes"]
+data = {}
+
+def get_param(response_json):
+    global faltantes, data
+
+    if not isinstance(response_json, dict):
+        return None
+
+    for clave in list(response_json.keys()):
+        if clave in faltantes:
+            data[clave] = response_json[clave]
+            faltantes.remove(clave)
+
+            # return faltantes[0] if faltantes else None
+    if len(faltantes) == 0:
+        # Llamar a la función de predecir
+        print(50*"^*")
+        print(data)
+        print(50*"^*")
+        return "prediccion"
+    return faltantes[0] if faltantes else None
+
+def limpiar_json_de_backticks(respuesta_texto):
+    if respuesta_texto.startswith("```"):
+        respuesta_texto = respuesta_texto[7:-3].strip()
+    return respuesta_texto
+
+
 @router.post("/send_message", summary="Enviar mensaje al chatbot", tags=["Chatbot"])
 def send_message(user_message: MensajeEntrada):
-    # Añadir mensaje del usuario al contexto de conversación
-    conversacion.append({ "role": "user", "content": user_message.mensaje })
-
-    payload = {
-        # "model": "deepseek-llm:7b-chat",
-        "model": "deepseek-r1:8b",
-        # "model": "mi-modelo:latest",
-        "messages": conversacion,
-        "prompt": "Recuerda responder solo en JSON.\n" + user_message.mensaje,
-        "system": system_prompt,
+    payload_analysis = {
+        "model": "analytical-agent:latest",
+        "prompt": "Pregunta: " + conversacion[-1]["content"] + "\nUsuario: " + user_message.mensaje,
         "stream": False
     }
 
+    conversacion.append({ "role": "user", "content": user_message.mensaje })
+
+    response = requests.post(OLLAMA_URL, json=payload_analysis)
+    response.raise_for_status()
+    data = response.json()
+    respuesta_texto = data.get("response", "").strip()
+    print(50*"-")
+    print(respuesta_texto)
+    print(50*"-")
+    respuesta_texto = limpiar_json_de_backticks(respuesta_texto)
+    
+    response_json = json.loads(respuesta_texto)
+
+    param = get_param(response_json)
+    if param == "prediccion":
+        return "¡Gracias por tu colaboración! Ahora procederé a realizar una predicción basada en tus respuestas..."
+    
+    payload_conversation = {
+        "model": "conversational-agent:latest",
+        # "messages": conversacion,
+        "prompt": "Pregunta al usuario sobre: " + param,
+        "stream": False
+    }
     try:
-        response = requests.post(OLLAMA_URL, json=payload)
+        response = requests.post(OLLAMA_URL, json=payload_conversation)
         response.raise_for_status()
         data = response.json()
-        
 
-        # El modelo debería devolver un string con JSON embebido
         respuesta_texto = data.get("response", "").strip()
         print(50*"-")
         print(respuesta_texto)
-        # respuesta_texto = respuesta_texto.replace("'", '"')
-        respuesta_texto = re.sub(r'<think>.*?</think>', '', respuesta_texto, flags=re.DOTALL)
-        # print(respuesta_texto)
-        # print(50*"-")
+        print(50*"-")
 
-        # Intentamos convertir a JSON
-        response_json = json.loads(respuesta_texto.strip())
-
-        # Añadir respuesta del modelo al contexto
         conversacion.append({ "role": "assistant", "content": respuesta_texto })
 
-        return response_json.get("respuesta")  # O retorna directamente `response_json` si quieres más campos
+        return respuesta_texto  # O retorna directamente `response_json` si quieres más campos
 
     except json.JSONDecodeError:
         return "Error: la respuesta del modelo no es un JSON válido."
@@ -69,25 +104,51 @@ def send_message(user_message: MensajeEntrada):
 
     except Exception as e:
         return f"Error inesperado: {e}"
+    
 
+# @router.post("/send_message", summary="Enviar mensaje al chatbot", tags=["Chatbot"])
+# def send_message(user_message: MensajeEntrada):
+#     # Añadir mensaje del usuario al contexto de conversación
+#     conversacion.append({ "role": "user", "content": user_message.mensaje })
 
+#     payload = {
+#         # "model": "deepseek-llm:7b-chat",
+#         # "model": "deepseek-r1:8b",
+#         # "model": "mi-modelo:latest",
+#         "model": "gemma2:2b",
+#         "messages": conversacion,
+#         "prompt": "Responder solo en JSON.\n" + user_message.mensaje,
+#         # "system": system_prompt,
+#         "stream": False
+#     }
 
-@router.post("/send_message", summary="Enviar mensaje al chatbot", tags=["Chatbot"])
-def send_message():
-    from openai import OpenAI
+#     try:
+#         response = requests.post(OLLAMA_URL, json=payload)
+#         response.raise_for_status()
+#         data = response.json()
 
-    client = OpenAI(
-        api_key="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"
-    )
+#         respuesta_texto = data.get("response", "").strip()
+#         print(50*"-")
+#         print(respuesta_texto)
+#         # respuesta_texto = respuesta_texto.replace("'", '"')
+#         # respuesta_texto = re.sub(r'<think>.*?</think>', '', respuesta_texto, flags=re.DOTALL)
+#         # print(respuesta_texto)
+#         # print(50*"-")
 
-    completion = client.chat.completions.create(
-        model="gpt-4o-mini",
-        store=True,
-        messages=[
-            {"role": "user", "content": "write a haiku about ai"}
-        ]
-    )
-    res = completion.choices[0].message
-    print(completion.choices[0].message)
+#         # Intentamos convertir a JSON
+#         response_json = json.loads(respuesta_texto.strip())
 
-    return {"respuesta": res}
+#         # Añadir respuesta del modelo al contexto
+#         # conversacion.append({ "role": "assistant", "content": respuesta_texto })
+
+#         return response_json.get("respuesta")  # O retorna directamente `response_json` si quieres más campos
+
+#     except json.JSONDecodeError:
+#         return "Error: la respuesta del modelo no es un JSON válido."
+
+#     except requests.RequestException as req_err:
+#         return f"Error al contactar con Ollama: {req_err}"
+
+#     except Exception as e:
+#         return f"Error inesperado: {e}"
+    

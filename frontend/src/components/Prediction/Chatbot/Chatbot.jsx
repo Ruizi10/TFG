@@ -9,7 +9,6 @@ function ChatBot() {
   const enviarMensaje = async () => {
     if (!mensaje.trim()) return;
 
-    // Añadir mensaje del usuario al chat
     const newChat = [...chat, { sender: 'user', text: mensaje }];
     setChat(newChat);
     setMensaje('');
@@ -23,20 +22,21 @@ function ChatBot() {
       });
 
       const data = await res.json();
-
       setChat([...newChat, { sender: 'bot', text: data }]);
     } catch {
       setChat([...newChat, { sender: 'bot', text: 'Error al contactar con el modelo.' }]);
     }
+
     setLoading(false);
   };
+
 
   return (
     <div className="chatbot-container">
       <div className="chatbot-box">
         <img src="/ChatBot.png" alt="Neurix Avatar" className="chatbot-avatar" />
         <h2 className="chatbot-title">Hola, soy <span>Neurix</span></h2>
-        <p className="chatbot-subtitle">¡Estoy aquí para ayudarte! Dime como te encuentras.</p>
+        <p className="chatbot-subtitle">¡Estoy aquí para ayudarte! Dime cómo te encuentras.</p>
 
         <div className="chat-history">
           {chat.map((msg, i) => (
@@ -55,8 +55,19 @@ function ChatBot() {
           <textarea
             className="chatbot-input"
             value={mensaje}
-            onChange={(e) => setMensaje(e.target.value)}
+            onChange={(e) => {
+              setMensaje(e.target.value);
+              e.target.style.height = "auto";
+              e.target.style.height = e.target.scrollHeight + "px";
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && !e.shiftKey) {
+                e.preventDefault();
+                enviarMensaje(); 
+              }
+            }}
             placeholder="Escribe tu mensaje aquí..."
+            rows={1}
           />
           <button className="chatbot-button" onClick={enviarMensaje} disabled={loading}>
             Enviar
