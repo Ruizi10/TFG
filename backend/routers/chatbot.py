@@ -55,7 +55,7 @@ def limpiar_json_de_backticks(respuesta_texto):
 def send_message(user_message: MensajeEntrada):
     payload_analysis = {
         "model": "analytical-agent:latest",
-        "prompt": "Pregunta: " + conversacion[-1]["content"] + "\nUsuario: " + user_message.mensaje,
+        "prompt": "Pregunta: " + conversacion[-1]['content'] + "\nUsuario: " + user_message.mensaje,
         "stream": False
     }
 
@@ -79,7 +79,8 @@ def send_message(user_message: MensajeEntrada):
     payload_conversation = {
         "model": "conversational-agent:latest",
         # "messages": conversacion,
-        "prompt": "Pregunta al usuario sobre: " + param,
+        "prompt": f"El usuario ha respondido: {conversacion[-1]['content']}. \nPregunta al usuario sobre: {param}",
+        # "prompt": f"Pregunta al usuario sobre: {param}",
         "stream": False
     }
     try:

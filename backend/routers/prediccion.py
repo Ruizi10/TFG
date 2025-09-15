@@ -1,3 +1,4 @@
+import uuid
 from fastapi import APIRouter, Depends
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
@@ -48,7 +49,8 @@ async def predecir_estado(formulario: FormularioEstudianteCreate, db: Session = 
     # Crear un nuevo registro en la base de datos   
     nuevo_estudiante = FormularioEstudiante(
         **data_dict,
-        depresion=depresion
+        depresion=depresion,
+        id = str(uuid.uuid4())
     )
     
     db.add(nuevo_estudiante)

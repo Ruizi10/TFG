@@ -6,7 +6,8 @@ Base = declarative_base()
 class FormularioEstudiante(Base):
     __tablename__ = "formularioestudiante"
 
-    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
+    # id = Column(Integer, primary_key=True, index=True, autoincrement=True)
+    id = Column(String(50), primary_key=True, index=True)
     genero = Column(String(50))
     edad = Column(Integer)
     presionAcademica = Column(Integer)
