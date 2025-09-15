@@ -15,7 +15,7 @@ OLLAMA_URL = "http://localhost:11434/api/generate"
 
 # Historial de conversación
 conversacion = [
-    { "role": "assitant", "content": "Dime tu nombre" }
+    { "role": "assistant", "content": "Dime tu nombre" }
 ]
 
 # Modelo de entrada para el mensaje del usuario

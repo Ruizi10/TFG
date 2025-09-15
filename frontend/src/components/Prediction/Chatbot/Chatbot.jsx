@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './ChatBot.css';
 
 function ChatBot() {
   const [mensaje, setMensaje] = useState('');
   const [chat, setChat] = useState([]);
   const [loading, setLoading] = useState(false);
+  const chatEndRef = useRef(null);
 
   const enviarMensaje = async () => {
     if (!mensaje.trim()) return;
@@ -30,6 +31,13 @@ function ChatBot() {
     setLoading(false);
   };
 
+  useEffect(() => {
+    const chatHistory = chatEndRef.current?.parentNode;
+    if (chatHistory) {
+    chatHistory.scrollTop = chatHistory.scrollHeight;
+    }
+  }, [chat]);
+
 
   return (
     <div className="chatbot-container">
@@ -49,6 +57,7 @@ function ChatBot() {
               <p>Escribiendo...</p>
             </div>
           )}
+          <div ref={chatEndRef} />
         </div>
 
         <div className="chat-input-row">

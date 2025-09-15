@@ -39,7 +39,7 @@ Reglas estrictas:
 Ejemplos:
 
 Input:
-Pregunta: ¿Cuál es tu género?
+Pregunta: ¿Podrías decirnos tu género?
 Usuario: Soy mujer.
 Output:
 {"genero": 2}
@@ -143,7 +143,7 @@ Output:
 {"satisfaccionEstudios": 4}
 
 Input:
-Pregunta: ¿Cuántas horas al día sueles dedicar a tus estudios?
+Pregunta: ¿Cuántas horas al día sueles dedicar a tus estudios diariamente?
 Usuario: Normalmente estudio unas 6 horas al día, dependiendo del día.
 Output:
 {"horasEstudio": 6}

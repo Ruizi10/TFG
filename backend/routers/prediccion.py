@@ -25,10 +25,8 @@ class FormularioEstudianteCreate(BaseModel):
 
 
 @router.post("/predict", summary="Predecir riesgo de depresión", tags=["Predicción"])
-
 async def predecir_estado(formulario: FormularioEstudianteCreate, db: Session = Depends(get_db)):
     print("Datos recibidos:", formulario.model_dump())
-
     # Convertir los datos del formulario a un diccionario y mapear los valores necesarios
     data_dict = {
         "genero": formulario.genero,
