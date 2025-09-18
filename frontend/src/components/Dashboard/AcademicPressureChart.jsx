@@ -57,6 +57,7 @@ const AcademicPressureChart = () =>{
                         fill={chartColors.sinDepresion}
                         fillOpacity={0.4}
                     />
+                    
                 </RadarChart>
             </ResponsiveContainer>
         </ChartCard>

@@ -28,7 +28,7 @@ class FormularioEstudianteCreate(BaseModel):
 @router.post("/predict", summary="Predecir riesgo de depresión", tags=["Predicción"])
 async def predecir_estado(formulario: FormularioEstudianteCreate, db: Session = Depends(get_db)):
     print("Datos recibidos:", formulario.model_dump())
-    # Convertir los datos del formulario a un diccionario y mapear los valores necesarios
+    
     data_dict = {
         "genero": formulario.genero,
         "edad": int(formulario.edad),
@@ -45,7 +45,7 @@ async def predecir_estado(formulario: FormularioEstudianteCreate, db: Session = 
     # Convertir el diccionario a DataFrame y realizar la predicción
     df = pd.DataFrame([data_dict])
     depresion = bool(predict(df))
-
+    print("Predicción de depresión:", depresion)
     # Crear un nuevo registro en la base de datos   
     nuevo_estudiante = FormularioEstudiante(
         **data_dict,
@@ -59,6 +59,11 @@ async def predecir_estado(formulario: FormularioEstudianteCreate, db: Session = 
 
     return {"resultado": depresion, "id_registro": nuevo_estudiante.id}
 
+async def predict_chatbot(df):
+    print("Datos para predicción en chatbot:", df)
+    depresion = bool(modelo.predict(pd.DataFrame([df])))
+    print("Predicción de depresión:", depresion)
+    return depresion
 
 def predict(df):
     map_sueno = {
@@ -69,7 +74,10 @@ def predict(df):
     }
 
     if "sueno" in df.columns:
-        df["sueno"] = df["sueno"].map(map_sueno).fillna(0)
+        if not pd.api.types.is_numeric_dtype(df["sueno"]):
+            df["sueno"] = df["sueno"].map(map_sueno).fillna(0)
+        else:
+            print("La columna 'sueno' ya es numérica.")
 
     map_alimentacion = {
         "Moderados": 1,
@@ -88,6 +96,4 @@ def predict(df):
     if "genero" in df.columns:
         df["genero"] = df["genero"].map(map_genero).fillna(0)
 
-    # df_scaled = scaler.transform(df)
     return modelo.predict(df)
-    # prediccion = modelo.predict(df)[0]

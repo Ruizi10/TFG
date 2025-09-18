@@ -68,7 +68,7 @@ transition: all 0.3s ease;
 .chat-message.user {
     align-self: flex-end;
     background-color: #7e57c2;
-    text-align: right;
+    text-align: left;
 }
 
 .chat-message.bot {

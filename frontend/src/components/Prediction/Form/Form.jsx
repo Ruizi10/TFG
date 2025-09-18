@@ -65,25 +65,8 @@ const Form = () => {
                 tipo={modalTipo}
                 id={registroID}
             />
-
         </>
     )
-
-    // return (
-        
-        
-        // <form onSubmit={handleSubmit(onSubmit)}>
-        //     <h2>Formulario de Bienestar Estudiantil</h2>
-
-        //     <PersonalData register={register} errors={errors} />
-        //     <AcademicHabits register={register} errors={errors} />
-        //     <Lifestyle register={register} errors={errors} />
-        //     <MentalHealth register={register} errors={errors} />
-        //     <SubmitButton />
-
-        // </form> 
-        
-    // )
 }
 
 export default Form
