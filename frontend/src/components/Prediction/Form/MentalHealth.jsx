@@ -9,7 +9,7 @@ const MentalHealth = ({register, errors}) => {
                     <label className="radio-option">
                         <input 
                             type="radio"
-                            value="Sí"
+                            value="1"
                             {...register("suicidio", {required: "Campo obligatorio"})}
                         />
                         Sí
@@ -17,7 +17,7 @@ const MentalHealth = ({register, errors}) => {
                     <label className="radio-option">
                         <input 
                             type="radio"
-                            value="No"
+                            value="0"
                             {...register("suicidio", {required: "Campo obligatorio"})}
                         />
                         No
@@ -44,7 +44,7 @@ const MentalHealth = ({register, errors}) => {
                     <label className="radio-option">
                         <input
                             type="radio"
-                            value="Sí"
+                            value="1"
                             {...register("antecedentes", {required: "Campo obligatorio"})}
                         />
                         Sí
@@ -52,7 +52,7 @@ const MentalHealth = ({register, errors}) => {
                     <label className="radio-option">
                         <input
                             type="radio"
-                            value="No"
+                            value="0"
                             {...register("antecedentes", {required: "Campo obligatorio"})}
                         />
                         No

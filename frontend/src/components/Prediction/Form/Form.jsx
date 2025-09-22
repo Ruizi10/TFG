@@ -24,12 +24,26 @@ const Form = () => {
 
     const onSubmit = async (data) => {
         try {
+            const mappedData = {
+                genero: parseInt(data.genero),
+                edad: parseInt(data.edad),
+                presionAcademica: parseInt(data.presionAcademica),
+                satisfaccionEstudios: parseInt(data.satisfaccionEstudios),
+                sueno: parseInt(data.sueno),
+                alimentacion: parseInt(data.alimentacion),
+                suicidio: parseInt(data.suicidio),
+                horasEstudio: parseInt(data.horasEstudio),
+                estresFinanciero: parseInt(data.estresFinanciero),
+                antecedentes: parseInt(data.antecedentes),
+            };
+
             const response = await fetch("http://localhost:8000/predict", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(data),
+
+                body: JSON.stringify(mappedData),
             });
         
             if (!response.ok) { throw new Error("Error en la respuesta del servidor"); }

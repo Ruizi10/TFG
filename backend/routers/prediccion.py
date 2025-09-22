@@ -1,7 +1,6 @@
 import uuid
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter
 from pydantic import BaseModel
-from sqlalchemy.orm import Session
 from ..models import FormularioEstudiante
 from ..database import get_db
 import pandas as pd
@@ -11,42 +10,73 @@ router = APIRouter()
 
 modelo = joblib.load("./backend/modelo_logistico.pkl")
 
+db = next(get_db())
+
 # Modelo de datos para el formulario de estudiante define los campos esperados
 class FormularioEstudianteCreate(BaseModel):
-    genero: str
-    edad: str
-    presionAcademica: str
-    satisfaccionEstudios: str
-    horasEstudio: str
-    sueno: str
-    alimentacion: str
-    suicidio: str
-    estresFinanciero: str
-    antecedentes: str
-
+    genero: int
+    edad: int
+    presionAcademica: int
+    satisfaccionEstudios: int
+    sueno: int
+    alimentacion: int
+    suicidio: int
+    horasEstudio: int
+    estresFinanciero: int
+    antecedentes: int
 
 @router.post("/predict", summary="Predecir riesgo de depresión", tags=["Predicción"])
-async def predecir_estado(formulario: FormularioEstudianteCreate, db: Session = Depends(get_db)):
-    print("Datos recibidos:", formulario.model_dump())
-    
-    data_dict = {
-        "genero": formulario.genero,
-        "edad": int(formulario.edad),
-        "presionAcademica": int(formulario.presionAcademica),
-        "satisfaccionEstudios": int(formulario.satisfaccionEstudios),
-        "sueno": formulario.sueno,
-        "alimentacion": formulario.alimentacion,
-        "suicidio": 1 if formulario.suicidio == "Sí" else 0,
-        "horasEstudio": int(formulario.horasEstudio),
-        "estresFinanciero": int(formulario.estresFinanciero),
-        "antecedentes": 1 if formulario.antecedentes == "Sí" else 0,
+async def predict(formulario: FormularioEstudianteCreate):
+    try:
+        df = formulario.model_dump()
+        print("Formulario convertido a diccionario:")
+    except:
+        print("Ya es un diccionario")
+        df = formulario
+        
+    print("Datos para predicción:", df)
+
+    df = pd.DataFrame([df])
+
+    depresion = bool(modelo.predict(df))
+    print("Predicción de depresión:", depresion)
+
+    nuevo_estudiante_id = save_to_db(df, depresion)
+
+    return {"resultado": depresion, "id_registro": nuevo_estudiante_id}
+
+def save_to_db(df, depresion):
+    map_sueno = {
+        1: "7-8 horas",
+        2: "5-6 horas",
+        3: "Más de 8 horas",
+        4: "Menos de 5 horas"
     }
 
-    # Convertir el diccionario a DataFrame y realizar la predicción
-    df = pd.DataFrame([data_dict])
-    depresion = bool(predict(df))
-    print("Predicción de depresión:", depresion)
-    # Crear un nuevo registro en la base de datos   
+    if "sueno" in df.columns:
+        df["sueno"] = df["sueno"].map(map_sueno)
+
+    map_alimentacion = {
+        1: "Moderados",
+        2: "Saludables",
+        3: "No saludables"
+    }
+
+    if "alimentacion" in df.columns:
+        df["alimentacion"] = df["alimentacion"].map(map_alimentacion)
+
+    map_genero = {
+        1: "Masculino",
+        2: "Femenino"
+    }
+
+    if "genero" in df.columns:
+        df["genero"] = df["genero"].map(map_genero)
+
+    data_dict = df.iloc[0].to_dict()
+
+    print("Datos para guardar en DB:\n", data_dict)
+
     nuevo_estudiante = FormularioEstudiante(
         **data_dict,
         depresion=depresion,
@@ -57,43 +87,5 @@ async def predecir_estado(formulario: FormularioEstudianteCreate, db: Session = 
     db.commit()
     db.refresh(nuevo_estudiante)
 
-    return {"resultado": depresion, "id_registro": nuevo_estudiante.id}
+    return nuevo_estudiante.id
 
-async def predict_chatbot(df):
-    print("Datos para predicción en chatbot:", df)
-    depresion = bool(modelo.predict(pd.DataFrame([df])))
-    print("Predicción de depresión:", depresion)
-    return depresion
-
-def predict(df):
-    map_sueno = {
-        "7-8 horas": 1,
-        "5-6 horas": 2,
-        "Más de 8 horas": 3,
-        "Menos de 5 horas": 4
-    }
-
-    if "sueno" in df.columns:
-        if not pd.api.types.is_numeric_dtype(df["sueno"]):
-            df["sueno"] = df["sueno"].map(map_sueno).fillna(0)
-        else:
-            print("La columna 'sueno' ya es numérica.")
-
-    map_alimentacion = {
-        "Moderados": 1,
-        "Saludables": 2,
-        "No saludables": 3
-    }
-
-    if "alimentacion" in df.columns:
-        df["alimentacion"] = df["alimentacion"].map(map_alimentacion).fillna(0)
-
-    map_genero = {
-        "Masculino": 1,
-        "Femenino": 2
-    }
-
-    if "genero" in df.columns:
-        df["genero"] = df["genero"].map(map_genero).fillna(0)
-
-    return modelo.predict(df)

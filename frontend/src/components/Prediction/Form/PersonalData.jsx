@@ -6,8 +6,8 @@ const PersonalData = ({register, errors}) => {
                 <label>Género
                     <select {...register("genero", { required: "Campo obligatorio" })}>
                         <option value="" hidden>Selecciona una opción</option>
-                        <option value="Masculino">Masculino</option>
-                        <option value="Femenino">Femenino</option>
+                        <option value="1">Masculino</option>
+                        <option value="2">Femenino</option>
                     </select>
                 </label>
                 {errors.genero && <p className="error">{errors.genero.message}</p>}

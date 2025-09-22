@@ -30,13 +30,19 @@ function ChatBot() {
       });
 
       const data = await res.json();
-      if(data.fin) {
+      console.log("------------------");
+      console.log(data);
+      console.log(data.id_registro);
+      console.log(data.resultado);
+      console.log("------------------");
+      if(data.resultado != null) {
         setRegistroID(data.id_registro);
         setModalTipo(data.resultado ? "riesgo" : "ok");
         setModalOpen(true);
       }
-
-      setChat([...newChat, { sender: 'bot', text: data }]);
+      else {
+        setChat([...newChat, { sender: 'bot', text: data }]);
+      }
     } catch {
       setChat([...newChat, { sender: 'bot', text: 'Error al contactar con el modelo.' }]);
     }

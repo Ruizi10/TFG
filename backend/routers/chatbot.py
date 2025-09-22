@@ -3,7 +3,7 @@ import requests
 import json
 from pydantic import BaseModel
 import re
-from .prediccion import predict_chatbot
+from .prediccion import predict
 
 router = APIRouter()
 
@@ -55,8 +55,9 @@ async def get_param(response_json):
         print(data)
         print(50*"^*")
         data = transform_data(data)
-        depresion = await predict_chatbot(data)
-        return True, depresion
+        resultado = await predict(data)
+
+        return True, resultado
     return False, faltantes[0]
 
 def limpiar_json_de_backticks(respuesta_texto):
@@ -91,14 +92,12 @@ async def send_message(user_message: MensajeEntrada):
     
     response_json = json.loads(respuesta_texto)
     # ---------------------------------------------------------------------
-    # response_json = {'edad': 24, 'genero': 1, 'presionAcademica': 5, 'satisfaccionEstudios': 1, 'horasEstudio': 5, 'sueno': 2, 'alimentacion': 3, 'suicidio': 0, 'estresFinanciero': 1, 'antecedentes': 0}
+    # response_json = {'edad': 24, 'genero': 1, 'presionAcademica': 1, 'satisfaccionEstudios': 1, 'horasEstudio': 5, 'sueno': 2, 'alimentacion': 3, 'suicidio': 0, 'estresFinanciero': 1, 'antecedentes': 0}
     # ---------------------------------------------------------------------
     fin, arg = await get_param(response_json)
     if fin:
-        print("Depresion:", arg)
-        # nuevo_registro = guardar_en_bd(data, arg)
-        # registro_id = nuevo_registro.id
-        return "¡Gracias por tu colaboración! Ahora procederé a realizar una predicción basada en tus respuestas..."
+        print("Depresion:", arg.get("resultado"))
+        return arg
     
     payload_conversation = {
         "model": "conversational-agent:latest",
