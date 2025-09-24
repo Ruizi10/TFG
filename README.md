@@ -48,6 +48,7 @@ El objetivo es detectar de manera preliminar indicios de depresión en estudiant
 - Estrés financiero, pensamientos negativos, antecedentes familiares
 
 ⚠️ **Este proyecto no pretende sustituir un diagnóstico clínico profesional.**
+
 Su finalidad es apoyar la detección temprana y concienciar sobre la importancia del cuidado de la salud mental.
 
 ---
@@ -81,7 +82,28 @@ pip install -r requirements.txt
 cd ..
 uvicorn backend.main:app --reload
 ```
-Disponible en 👉 http://localhost:8000
+---
+
+## 📑 Documentación del Backend
+
+La API está construida con **FastAPI**, lo que permite acceder a la documentación interactiva automáticamente generada con **Swagger UI**.
+
+- Abre en tu navegador: http://localhost:8000/docs
+
+
+Ahí podrás:
+- Probar los endpoints disponibles (formulario, predicción, chatbot, etc.)
+- Ver los modelos de datos esperados
+- Comprobar las respuestas en tiempo real
+
+---
+
+## 📈 Futuras implementaciones
+
+- Integrar el despliegue en **Docker** para simplificar la ejecución en cualquier equipo.  
+- Ampliar el chatbot con modelos de IA más potentes, ya sea mediante **Ollama**, **OpenAI** u otras alternativas.  
+- Implementar un sistema de alertas o recomendaciones personalizadas según los resultados.  
+- Explorar la integración con APIs de salud mental externas para ofrecer recursos en tiempo real.  
 
 
 ---
@@ -95,4 +117,5 @@ Disponible en 👉 http://localhost:8000
 ## 📘 Licencia
 
 Proyecto académico con fines educativos — 2025.
+
 Adrián Ruiz Serrano
