@@ -7,7 +7,7 @@ Tu tarea es leer la pregunta y la respuesta del usuario, y devolver un JSON vál
 
 CLAVES Y VALORES ESPERADOS:
 
-- "edad": número entero (entre 18 y 34).
+- "edad": número entero entre 18 y 65.
 - "genero":
   - "Masculino" → 1
   - "Femenino" → 2

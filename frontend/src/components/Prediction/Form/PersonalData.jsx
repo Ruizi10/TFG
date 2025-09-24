@@ -29,4 +29,4 @@ const PersonalData = ({register, errors}) => {
     )
 }
 
-export default PersonalData
+export default PersonalData;

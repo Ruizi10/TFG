@@ -1,6 +1,6 @@
 .navbar {
     width: 100%;
-    padding: 1.5rem 2rem;
+    padding: 1rem 2rem;
     background-color: var(--clr-main);
     border-bottom: 3px solid black;
     display: flex;
@@ -32,7 +32,7 @@
     margin: 0;
     transition: transform 0.25s ease;
     text-align: center;
-    background: linear-gradient(to right, rgb(188, 221, 39), rgb(58, 226, 238), rgb(64, 177, 19));
+    background: linear-gradient(to right, rgb(188, 221, 39), rgb(58, 226, 238), rgb(64, 177, 19), rgb(226, 150, 36),rgb(204, 54, 43));
     background-clip: text;
     color: transparent;
     background-size: 300%;
@@ -48,15 +48,15 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1.5rem;
-    padding: 1rem 0 0;
+    gap: 1.7rem;
+    padding: 1.2rem 0 0;
     margin: 0;
 }
 
 .menu-link {
     text-decoration: none;
-    color: rgb(157, 197, 47);
-    font-size: 1.3rem;
+    color: rgb(163, 209, 36);
+    font-size: 1.2rem;
 }
 
 .menu-link:hover {

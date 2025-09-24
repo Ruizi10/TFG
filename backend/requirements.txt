@@ -6,3 +6,7 @@ psycopg2
 python-multipart
 pandas
 joblib
+scikit-learn
+pydantic
+psycopg2-binary
+ollama

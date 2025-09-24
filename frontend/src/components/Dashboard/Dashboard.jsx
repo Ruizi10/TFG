@@ -12,14 +12,13 @@ const Dashboard = () => {
     return (
         <div className="dashboard">
 
-            <h2 className='dashboard-title'>Dashboard de Salud Mental Estudiantil</h2>
+            <h2 className='dashboard-title'>Estadísticas de interés en la comunidad estudiantil</h2>
             <KPIStats />
             <div className="chart-grid">
                 <DepresionChart />
                 <GenderBarChart />
                 <AcademicPressureChart />
                 <SatisfactionChart />
-                {/* Más gráficos a futuro*/}
             </div>
         </div>
     )

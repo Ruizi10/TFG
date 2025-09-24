@@ -15,10 +15,9 @@ const Navbar = () => {
                 <li><Link className="menu-link" to="/">Inicio</Link></li>
                 <li><Link className="menu-link" to="/prediction">Autoevaluación</Link></li>
                 <li><Link className="menu-link" to="/news">Noticias</Link></li>
-                <li><Link className="menu-link" to="/dashboard">Dashboard</Link></li>
-                {/* Se añadirán más enlaces */}
+                <li><Link className="menu-link" to="/dashboard">Tablero de estadísticas</Link></li>
             </ul>
         </nav>
     )
 }
-export default Navbar
+export default Navbar;

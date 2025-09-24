@@ -60,6 +60,7 @@ async def get_param(response_json):
         return True, resultado
     return False, faltantes[0]
 
+
 def limpiar_json_de_backticks(respuesta_texto):
     if respuesta_texto.startswith("```"):
         respuesta_texto = respuesta_texto[7:-3].strip()
@@ -132,51 +133,3 @@ async def send_message(user_message: MensajeEntrada):
 
     except Exception as e:
         return f"Error inesperado: {e}"
-    
-
-# @router.post("/send_message", summary="Enviar mensaje al chatbot", tags=["Chatbot"])
-# def send_message(user_message: MensajeEntrada):
-#     # Añadir mensaje del usuario al contexto de conversación
-#     conversacion.append({ "role": "user", "content": user_message.mensaje })
-
-#     payload = {
-#         # "model": "deepseek-llm:7b-chat",
-#         # "model": "deepseek-r1:8b",
-#         # "model": "mi-modelo:latest",
-#         "model": "gemma2:2b",
-#         "messages": conversacion,
-#         "prompt": "Responder solo en JSON.\n" + user_message.mensaje,
-#         # "system": system_prompt,
-#         "stream": False
-#     }
-
-#     try:
-#         response = requests.post(OLLAMA_URL, json=payload)
-#         response.raise_for_status()
-#         data = response.json()
-
-#         respuesta_texto = data.get("response", "").strip()
-#         print(50*"-")
-#         print(respuesta_texto)
-#         # respuesta_texto = respuesta_texto.replace("'", '"')
-#         # respuesta_texto = re.sub(r'<think>.*?</think>', '', respuesta_texto, flags=re.DOTALL)
-#         # print(respuesta_texto)
-#         # print(50*"-")
-
-#         # Intentamos convertir a JSON
-#         response_json = json.loads(respuesta_texto.strip())
-
-#         # Añadir respuesta del modelo al contexto
-#         # conversacion.append({ "role": "assistant", "content": respuesta_texto })
-
-#         return response_json.get("respuesta")  # O retorna directamente `response_json` si quieres más campos
-
-#     except json.JSONDecodeError:
-#         return "Error: la respuesta del modelo no es un JSON válido."
-
-#     except requests.RequestException as req_err:
-#         return f"Error al contactar con Ollama: {req_err}"
-
-#     except Exception as e:
-#         return f"Error inesperado: {e}"
-    

@@ -32,7 +32,7 @@ transition: transform 0.2s ease;
 
 .footer-contact,
 .footer-note {
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: #aaa;
     margin-top: 0.5rem;
 }

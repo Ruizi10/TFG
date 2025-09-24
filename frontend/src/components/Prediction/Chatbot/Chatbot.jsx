@@ -6,7 +6,6 @@ function ChatBot() {
   const [mensaje, setMensaje] = useState('');
   const [chat, setChat] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [resultado, setResultado] = useState(null);
   const chatEndRef = useRef(null);
 
     
