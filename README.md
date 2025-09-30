@@ -71,15 +71,25 @@ npm run dev
 4. Abre en tu navegador:
 ```
 http://localhost:5173
+
 ```
-5. En otra terminal, instala las dependencias del backend:
+5. (Opcional aunque recomendado) Crear un entorno virtual para aislar las dependencias del backend:
+(Si ya tienes uno creado, simplemente actívalo)
+
 ```
-cd backend
-pip install -r requirements.txt
+python -m venv venv
+# En Windows (PowerShell)
+.\venv\Scripts\Activate.ps1
+# En Linux/Mac
+source venv/bin/activate
 ```
-6. Inicia el backend con FastAPI:
+
+6. En otra terminal, instala las dependencias del backend:
 ```
-cd ..
+pip install -r backend/requirements.txt
+```
+7. Inicia el backend con FastAPI:
+```
 uvicorn backend.main:app --reload
 ```
 ---
