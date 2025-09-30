@@ -1,9 +1,7 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter
 import requests
-import json
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo  # Para manejar zonas horarias
-from translate import Translator #Para traducir las noticias de la API
 
 router = APIRouter()
 

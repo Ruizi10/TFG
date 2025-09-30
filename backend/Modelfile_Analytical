@@ -68,7 +68,6 @@ Usuario: Sí claro, soy una chica.
 Output:
 {"genero": 2}
 
-
 Input:
 Pregunta: ¿Podrías decirme tu edad para tener una mejor comprensión de tu situación?
 Usuario: Tengo 22 años.
@@ -117,6 +116,11 @@ Usuario: Últimamente no siento que tenga demasiadas responsabilidades y las pue
 Output:
 {"presionAcademica": 1}
 
+Input:
+Pregunta: ¿Sientes que tienes demasiadas responsabilidades académicas últimamente?
+Usuario: A veces me agobio con tantas tareas pero acabo sacando todo adecuadamente.
+Output:
+{"presionAcademica": 2}
 
 Input:
 Pregunta: ¿Cómo te sientes con respecto a tus estudios y rendimiento en general?
@@ -149,10 +153,22 @@ Output:
 {"horasEstudio": 6}
 
 Input:
-Pregunta: ¿De media, cuántas horas sueles estudiar al día?
+Pregunta: De media, ¿cuántas horas sueles estudiar al día?
 Usuario: Creo que unas 4 horas más o menos entre clases y por mi cuenta.
 Output:
 {"horasEstudio": 4}
+
+Input:
+Pregunta: ¿Cuántas horas al día dedicas a tus actividades estudiantiles en total?
+Usuario: Suelo dedicarle unas 7 horas contando con las clases y el estudio en casa.
+Output:
+{"horasEstudio": 7}
+
+Input:
+Pregunta: ¿Cuántas horas al día dedicas a tus actividades estudiantiles en total?
+Usuario: Suelo dedicarle unas 7 horas contando con las clases y el estudio en casa.
+Output:
+{"horasEstudio": 7}
 
 Input:
 Pregunta: ¿Cuántas horas sueles dormir cada noche?
@@ -173,10 +189,28 @@ Output:
 {"sueno": 1}
 
 Input:
-Pregunta: ¿Cuántas horas diarias sueles dormir?
+Pregunta: Dormir bien también puede ayudarte a rendir mejor. ¿Cuántas horas sueles dormir cada noche?
 Usuario: Duermo mucho y me siento descansado.
 Output:
 {"sueno": 3}
+
+Input:
+Pregunta: Dormir bien es fundamental para nuestro bienestar. ¿Cuántas horas sueles dormir cada noche?
+Usuario: Suelo dormir unas 7 horas.
+Output:
+{"sueno": 1}
+
+Input:
+Pregunta: La calidad del sueño puede influir mucho en cómo nos sentimos. ¿Cuántas horas sueles dormir cada noche?
+Usuario: En general suelo dormir poco, unas 5 horas.
+Output:
+{"sueno": 2}
+
+Input:
+Pregunta: La calidad del sueño puede influir mucho en cómo nos sentimos. ¿Cuántas horas sueles dormir cada noche?
+Usuario: Duermo muy poco, puede que no llegue ni a 5 horas.
+Output:
+{"sueno": 4}
 
 Input:
 Pregunta: ¿Cómo describirías tu alimentación diaria?
@@ -197,12 +231,36 @@ Output:
 {"alimentacion": "3"}
 
 Input:
-Pregunta: ¿En momentos difíciles como los que describes, a veces surgen pensamientos negativos o de rendirse. ¿Te ha pasado algo así últimamente?
+Pregunta: En cuanto a tu alimentación diaria, ¿cómo la describirías?
+Usuario: Suelo comer en la universidad algo rápido y no demasiado saludable.
+Output:
+{"alimentacion": "3"}
+
+Input:
+Pregunta: ¿Podrías contarme un poco sobre tus hábitos alimenticios? ¿Son equilibrados o a veces caóticos por el ritmo de los estudios?
+Usuario: Suelo comer fuera de casa aunque me intento cuidar mucho en ese aspecto.
+Output:
+{"alimentacion": "1"}
+
+Input:
+Pregunta: ¿Cómo describirías tu alimentación diaria?
+Usuario: A veces es caótica, pero trato de comer lo que puedo.
+Output:
+{"alimentacion": "2"}
+
+Input:
+Pregunta: ¿Podrías contarme un poco sobre tus hábitos alimenticios? ¿Son equilibrados o a veces caóticos por el ritmo de los estudios?
+Usuario: Como mucho fuera de casa y debería cuidar más mi alimentación.
+Output:
+{"alimentacion": "3"}
+
+Input:
+Pregunta: ¿En algún momento reciente has sentido que no tenías fuerzas para seguir adelante?
 Usuario: Sí… he tenido días en los que he pensado que no vale la pena seguir.
 Output:
 {"suicidio": 1}
 
-Pregunta: ¿En algún momento reciente has sentido que no tenías fuerzas para seguir adelante?
+Pregunta: En ocasiones, cuando las cosas se ponen tan cuesta arriba, es común que surjan pensamientos negativos o de no querer seguir para adelante. ¿Te ha pasado últimamente?
 Usuario: No, por suerte no he llegado a ese punto.
 Output:
 {"suicidio": 0}
@@ -237,8 +295,18 @@ Usuario: Sí, mi madre estuvo en tratamiento por depresión hace unos años.
 Output:
 {"antecedentes": 1}
 
-Pregunta: ¿Algún familiar ha necesitado apoyo psicológico o psiquiátrico alguna vez?
+Pregunta: ¿Conoces sialgún familiar cercano ha sufrido problemas relacionados con la salud mental?
 Usuario: No que yo sepa, en mi familia nunca se ha hablado de eso.
+Output:
+{"antecedentes": 0}
+
+Pregunta: ¿Conoces a algún familiar cercano ha sufrido problemas relacionados con la salud mental?
+Usuario: Sí, mi abuelo.
+Output:
+{"antecedentes": 1}
+
+Pregunta: ¿Conoces a algún familiar cercano ha sufrido problemas relacionados con la salud mental?
+Usuario: No.
 Output:
 {"antecedentes": 0}
 

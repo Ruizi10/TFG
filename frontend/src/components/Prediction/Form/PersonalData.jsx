@@ -18,7 +18,7 @@ const PersonalData = ({register, errors}) => {
                         placeholder="Introduce tu edad"
                         type="number"
                         min={"18"}
-                        max={"34"}
+                        max={"65"}
                         {...register("edad", {
                             required: "Campo obligatorio",
                         })}

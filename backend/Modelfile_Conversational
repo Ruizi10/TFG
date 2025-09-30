@@ -40,6 +40,7 @@ Input: El usuario ha respondido: Soy un hombre. Pregunta al usuario sobre sus ho
 Output: Gracias por compartirlo. ¿Cuántas horas al día sueles dedicar a tus estudios?
 Output: Perfecto, gracias por la información. ¿Cuántas horas al día sueles dedicar a tus estudios?
 Output: De acuerdo, gracias por compartirlo. ¿Cuántas horas al día dedicas a tus actividades estudiantiles?
+Output: Gracias por compartirlo. De media, ¿cuántas horas sueles estudiar al día?
 
 Input: El usuario ha respondido: Estudio 9 horas diarias. Pregunta al usuario sobre su presión académica.
 Output: Eso son muchas horas, es normal que acabes muy cansado y con falta de energía. ¿Te sientes abrumado por la cantidad de tareas o trabajos que tienes?
@@ -80,8 +81,8 @@ Output: Es bueno escuchar que duermes lo suficiente, eso es un buen indicio. ¿S
 Output: Me alegra saber que duermes bien, eso es positivo. ¿Podrías contarme un poco sobre tus hábitos alimenticios? ¿Son equilibrados o a veces caóticos por el ritmo de los estudios?
 
 Input: El usuario ha respondido: Mi alimentación es bastante caótica, a veces no como bien por falta de tiempo. Pregunta al usuario sobre pensamientos suicidas.
-Output: Entiendo que a veces sea difícil seguir una alimentación equilibrada con tanto que hacer. Gracias por compartirlo. En momentos difíciles como los que describes, a veces surgen pensamientos negativos o de rendirse. ¿Te ha pasado algo así últimamente?
-Output: No te preocupes por ello, puedes preguntar a profesionales para que te ayuden a seguir una alimentación más saludable. Gracias por compartirlo. Cuando las cosas se ponen tan cuesta arriba, es común que surjan pensamientos muy difíciles. ¿Te ha pasado últimamente?
+Output: Entiendo que a veces sea difícil seguir una alimentación equilibrada con tanto que hacer. Gracias por compartirlo. En momentos difíciles, a veces surgen pensamientos negativos o de rendirse. ¿Te ha pasado algo así últimamente?
+Output: No te preocupes por ello, puedes preguntar a profesionales para que te ayuden a seguir una alimentación más saludable. Gracias por compartirlo. En ocasiones, cuando las cosas se ponen tan cuesta arriba, es común que surjan pensamientos muy difíciles. ¿Te ha pasado últimamente?
 Output: Es comprensible que con tanto que hacer, la alimentación pueda volverse caótica. Gracias por compartirlo. ¿En algún momento reciente has sentido que no tenías fuerzas para seguir adelante?
 Input: En general me cuido bastante la alimentación. A veces salgo fuera pero en general estoy contento. Pregunta al usuario sobre pensamientos suicidas.
 Output: Me alegra saber que te cuidas y estás contento con tu alimentación, eso es muy positivo. Gracias por compartirlo. En momentos difíciles como los que describes, a veces surgen pensamientos negativos o de rendirse. ¿Te ha pasado algo así últimamente?

@@ -69,6 +69,10 @@ def limpiar_json_de_backticks(respuesta_texto):
 def limpiar_razonamiento_respuesta(texto: str) -> str:
     if "**Recuerda**" in texto or "Recuerda:" in texto:
         texto = re.split(r"\*\*Recuerda[:]\*\*", texto)[0]
+    if "**Remember**" in texto or "Remember:" in texto:
+        texto = re.split(r"\*\*Remember[:]\*\*", texto)[0]
+    if "**Te sugiero lo siguiente:**" in texto or "Te sugiero lo siguiente:" in texto:
+        texto = re.split(r"\*\*Te sugiero lo siguiente[:]\*\*", texto)[0]
     return texto.strip()
 
 
@@ -101,7 +105,7 @@ async def send_message(user_message: MensajeEntrada):
         return arg
     
     payload_conversation = {
-        "model": "conversational-agent:latest",
+        "model": "conversational-agent-v2:latest",
         # "messages": conversacion,
         "prompt": f"El usuario ha respondido: {conversacion[-1]['content']}. \nPregunta al usuario sobre: {arg}",
         # "prompt": f"Pregunta al usuario sobre: {param}",
