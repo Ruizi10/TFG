@@ -1,5 +1,5 @@
 .foot {
-    background-color: #3f1853;
+    background-color: var(--clr-main);
     color: #ccc;
     text-align: center;
     padding: 2rem 1rem;

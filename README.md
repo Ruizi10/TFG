@@ -58,7 +58,7 @@ Su finalidad es apoyar la detección temprana y concienciar sobre la importancia
 1. Clona el repositorio:
 ```bash
 git clone https://github.com/Ruizi10/TFG.git
-cd neurostat
+cd TFG
 ```
 2. Instala las dependencias:
 ```bash

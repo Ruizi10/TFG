@@ -11,9 +11,7 @@ router = APIRouter()
 OLLAMA_URL = "http://localhost:11434/api/generate"
 
 # Historial de conversación
-conversacion = [
-    { "role": "assistant", "content": "Dime tu nombre" }
-]
+
 
 # Modelo de entrada para el mensaje del usuario
 class MensajeEntrada(BaseModel):
@@ -21,7 +19,9 @@ class MensajeEntrada(BaseModel):
 
 faltantes = ["edad", "genero", "presionAcademica", "satisfaccionEstudios", "horasEstudio", "sueno", "alimentacion", "suicidio", "estresFinanciero", "antecedentes"]
 data = {}
-
+conversacion = [
+    { "role": "assistant", "content": "¡Hola! Soy Neurix, tu asistente virtual. ¿Cómo te sientes hoy?" }
+]
 def transform_data(data):
     # Ordenar las columnnas según el orden esperado por el modelo
     data_dict = {
@@ -78,6 +78,7 @@ def limpiar_razonamiento_respuesta(texto: str) -> str:
 
 @router.post("/send_message", summary="Enviar mensaje al chatbot", tags=["Chatbot"])
 async def send_message(user_message: MensajeEntrada):
+    global data, conversacion, faltantes
     payload_analysis = {
         "model": "analytical-agent:latest",
         "prompt": "Pregunta: " + conversacion[-1]['content'] + "\nUsuario: " + user_message.mensaje,
@@ -88,8 +89,8 @@ async def send_message(user_message: MensajeEntrada):
 
     response = requests.post(OLLAMA_URL, json=payload_analysis)
     response.raise_for_status()
-    data = response.json()
-    respuesta_texto = data.get("response", "").strip()
+    response_json = response.json()
+    respuesta_texto = response_json.get("response", "").strip()
     print(50*"-")
     print(respuesta_texto)
     print(50*"-")
@@ -99,13 +100,19 @@ async def send_message(user_message: MensajeEntrada):
     # ---------------------------------------------------------------------
     # response_json = {'edad': 24, 'genero': 1, 'presionAcademica': 1, 'satisfaccionEstudios': 1, 'horasEstudio': 5, 'sueno': 2, 'alimentacion': 3, 'suicidio': 0, 'estresFinanciero': 1, 'antecedentes': 0}
     # ---------------------------------------------------------------------
+    print("Response JSON:", response_json)
     fin, arg = await get_param(response_json)
     if fin:
         print("Depresion:", arg.get("resultado"))
+        faltantes = ["edad", "genero", "presionAcademica", "satisfaccionEstudios", "horasEstudio", "sueno", "alimentacion", "suicidio", "estresFinanciero", "antecedentes"]
+        data = {}
+        conversacion = [
+            { "role": "assistant", "content": "¡Hola! Soy Neurix, tu asistente virtual. ¿Cómo te sientes hoy?" }
+        ]
         return arg
     
     payload_conversation = {
-        "model": "conversational-agent-v2:latest",
+        "model": "conversational-agent:v2",
         # "messages": conversacion,
         "prompt": f"El usuario ha respondido: {conversacion[-1]['content']}. \nPregunta al usuario sobre: {arg}",
         # "prompt": f"Pregunta al usuario sobre: {param}",
@@ -114,9 +121,9 @@ async def send_message(user_message: MensajeEntrada):
     try:
         response = requests.post(OLLAMA_URL, json=payload_conversation)
         response.raise_for_status()
-        data = response.json()
+        response_json = response.json()
 
-        respuesta_texto = data.get("response", "").strip()
+        respuesta_texto = response_json.get("response", "").strip()
         print(50*"-")
         print(respuesta_texto)
         print(50*"-")

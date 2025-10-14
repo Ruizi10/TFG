@@ -47,9 +47,9 @@ async def predict(formulario: FormularioEstudianteCreate):
 
 def save_to_db(df, depresion):
     map_sueno = {
-        1: "7-8 horas",
-        2: "5-6 horas",
-        3: "Más de 8 horas",
+        1: "Más de 8 horas",
+        2: "7-8 horas",
+        3: "5-6 horas",
         4: "Menos de 5 horas"
     }
 
@@ -57,8 +57,8 @@ def save_to_db(df, depresion):
         df["sueno"] = df["sueno"].map(map_sueno)
 
     map_alimentacion = {
-        1: "Moderados",
-        2: "Saludables",
+        1: "Saludables",
+        2: "Moderados",
         3: "No saludables"
     }
 
@@ -66,8 +66,8 @@ def save_to_db(df, depresion):
         df["alimentacion"] = df["alimentacion"].map(map_alimentacion)
 
     map_genero = {
-        1: "Masculino",
-        2: "Femenino"
+        0: "Masculino",
+        1: "Femenino"
     }
 
     if "genero" in df.columns:

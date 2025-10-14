@@ -9,19 +9,19 @@ CLAVES Y VALORES ESPERADOS:
 
 - "edad": número entero entre 18 y 65.
 - "genero":
-  - "Masculino" → 1
-  - "Femenino" → 2
+  - "Masculino" → 0
+  - "Femenino" → 1
 - "presionAcademica": valor entre 1 y 5.
 - "satisfaccionEstudios": valor entre 1 y 5.
 - "horasEstudio": número entero entre 1 y 12.
 - "sueno":
-  - "7-8 horas" → 1
-  - "5-6 horas" → 2
-  - "Más de 8 horas" → 3
+  - "Más de 8 horas" → 1
+  - "7-8 horas" → 2
+  - "5-6 horas" → 3
   - "Menos de 5 horas" → 4
 - "alimentacion":
-  - "Moderados" → 1
-  - "Saludables" → 2
+  - "Saludables" → 1
+  - "Moderados" → 2
   - "No saludables" → 3
 - "suicidio":
   - "Si" → 1
@@ -39,34 +39,83 @@ Reglas estrictas:
 Ejemplos:
 
 Input:
-Pregunta: ¿Podrías decirnos tu género?
-Usuario: Soy mujer.
+Pregunta: ¡Hola! Soy Neurix, tu asistente virtual. ¿Cómo te sientes hoy?
+Usuario: Me siento bien, gracias.
 Output:
-{"genero": 2}
+{}
+
+Input:
+Pregunta: ¡Hola! Soy Neurix, tu asistente virtual. ¿Cómo te sientes hoy?
+Usuario: Hola Neurix, me llamo Juan.
+Output:
+{"genero": 0}
+
+Input:
+Pregunta: ¡Hola! Soy Neurix, tu asistente virtual. ¿Cómo te sientes hoy?
+Usuario: Hola Neurix, me llamo Tomás.
+Output:
+{"genero": 0}
+
+Input:
+Pregunta: ¡Hola! Soy Neurix, tu asistente virtual. ¿Cómo te sientes hoy?
+Usuario: Hola Neurix, me llamo Antonio.
+Output:
+{"genero": 0}
+
+Input:
+Pregunta: ¡Hola! Soy Neurix, tu asistente virtual. ¿Cómo te sientes hoy?
+Usuario: Hola Neurix, me llamo Adrián.
+Output:
+{"genero": 0}
+
+Input:
+Pregunta: ¡Hola! Soy Neurix, tu asistente virtual. ¿Cómo te sientes hoy?
+Usuario: Hola Neurix, me llamo Ana.
+Output:
+{"genero": 1}
+
+Input:
+Pregunta: ¡Hola! Soy Neurix, tu asistente virtual. ¿Cómo te sientes hoy?
+Usuario: Hola Neurix, me llamo Natalia.
+Output:
+{"genero": 1}
+
+Input:
+Pregunta: ¡Hola! Soy Neurix, tu asistente virtual. ¿Cómo te sientes hoy?
+Usuario: Hola Neurix, me llamo María.
+Output:
+{"genero": 1}
 
 Input:
 Pregunta: ¿Podrías decirnos tu género?
 Usuario: Soy mujer.
 Output:
-{"genero": 2}
+{"genero": 1}
+
+Input:
+Pregunta: ¿Podrías decirnos tu género?
+Usuario: Soy mujer.
+Output:
+{"genero": 1}
+
 
 Input:
 Pregunta: ¿Te importaría decirnos tu género para comenzar con el diagnóstico?
 Usuario: Sí, soy un chico.
 Output:
-{"genero": 1}
+{"genero": 0}
 
 Input:
 Pregunta: ¿Te importaría decirnos tu género para comenzar con el diagnóstico?
 Usuario: Sí, soy un hombre.
 Output:
-{"genero": 1}
+{"genero": 0}
 
 Input:
 Pregunta: ¿Te sientes cómodo compartiendo tu género con nosotros?
 Usuario: Sí claro, soy una chica.
 Output:
-{"genero": 2}
+{"genero": 1}
 
 Input:
 Pregunta: ¿Podrías decirme tu edad para tener una mejor comprensión de tu situación?
@@ -81,16 +130,16 @@ Output:
 {"edad": 27}
 
 Input:
-Pregunta: ¿Podrías decirme cuántos años llevas estudiando?
-Usuario: Llevo estudiando 5 años.
-Output: 18+5
-{"edad": 23}
+Pregunta: ¿Qué edad tienes actualmente?
+Usuario: Tengo 28 años.
+Output:
+{"edad": 28}
 
 Input:
-Pregunta: ¿Podrías decirme cuántos años llevas estudiando?
-Usuario: Llevo estudiando 9 años.
-Output: 18+9
-{"edad": 27}
+Pregunta: ¿Qué edad tienes actualmente?
+Usuario: Tengo 18 años.
+Output:
+{"edad": 18}
 
 Input:
 Pregunta: ¿Te importa decirme cuántos años tienes?
@@ -180,31 +229,31 @@ Input:
 Pregunta: De media, ¿Cuántas horas sueles dormir al día?
 Usuario: Creo que duermo unas 6 horas diarias.
 Output:
-{"sueno": 2}
+{"sueno": 3}
 
 Input:
 Pregunta: ¿Cuántas horas diarias sueles dormir?
 Usuario: Me esfuerzo por mantener una rutina, así que intento dormir entre 7 y 8 horas.
 Output:
-{"sueno": 1}
+{"sueno": 2}
 
 Input:
 Pregunta: Dormir bien también puede ayudarte a rendir mejor. ¿Cuántas horas sueles dormir cada noche?
 Usuario: Duermo mucho y me siento descansado.
 Output:
-{"sueno": 3}
+{"sueno": 1}
 
 Input:
 Pregunta: Dormir bien es fundamental para nuestro bienestar. ¿Cuántas horas sueles dormir cada noche?
 Usuario: Suelo dormir unas 7 horas.
 Output:
-{"sueno": 1}
+{"sueno": 2}
 
 Input:
 Pregunta: La calidad del sueño puede influir mucho en cómo nos sentimos. ¿Cuántas horas sueles dormir cada noche?
 Usuario: En general suelo dormir poco, unas 5 horas.
 Output:
-{"sueno": 2}
+{"sueno": 3}
 
 Input:
 Pregunta: La calidad del sueño puede influir mucho en cómo nos sentimos. ¿Cuántas horas sueles dormir cada noche?
@@ -213,46 +262,112 @@ Output:
 {"sueno": 4}
 
 Input:
+Pregunta: Dormir bien es fundamental para nuestro bienestar. ¿Cuántas horas sueles dormir cada noche?
+Usuario: Puede que llegue a dormir unas 9 horas.
+Output:
+{"sueno": 1}
+
+Input:
+Pregunta: Dormir bien también puede ayudarte a rendir mejor. ¿Cuántas horas sueles dormir cada noche?
+Usuario: Duermo más de 8 horas.
+Output:
+{"sueno": 1}
+
+Input:
+Pregunta: La calidad del sueño puede influir mucho en cómo nos sentimos. ¿Cuántas horas sueles dormir cada noche?
+Usuario: Duermo unas 5 o 6 horas.
+Output:
+{"sueno": 3}
+
+Input:
+Pregunta: Dormir bien es fundamental para nuestro bienestar. ¿Cuántas horas sueles dormir cada noche?
+Usuario: Suelo dormir unas 7 horas.
+Output:
+{"sueno": 2}
+
+Input:
+Pregunta: Dormir bien es fundamental para nuestro bienestar. ¿Cuántas horas sueles dormir cada noche?
+Usuario: Suelo dormir unas 6 horas.
+Output:
+{"sueno": 3}
+
+Input:
+Pregunta: Dormir bien también puede ayudarte a rendir mejor. ¿Cuántas horas sueles dormir cada noche?
+Usuario: Suelo dormir unas 7 horas.
+Output:
+{"sueno": 2}
+
+Input:
+Pregunta: La calidad del sueño puede influir mucho en cómo nos sentimos. ¿Cuántas horas sueles dormir cada noche?
+Usuario: Duermo 8 horas.
+Output:
+{"sueno": 2}
+
+Input:
+Pregunta: Dormir bien también puede ayudarte a rendir mejor. ¿Cuántas horas sueles dormir cada noche?
+Usuario: Generalmente duermo más de 8 horas.
+Output:
+{"sueno": 1}
+
+Input:
 Pregunta: ¿Cómo describirías tu alimentación diaria?
 Usuario: Bastante equilibrada, intento comer sano siempre que puedo.
 Output:
-{"alimentacion": "2"}
+{"alimentacion": 1}
 
 Input:
 Pregunta: ¿Tu alimentación es más bien equilibrada o a veces caótica por el ritmo de los estudios?
 Usuario: Depende del día, hay veces que como bien y otras que no tanto.
 Output:
-{"alimentacion": "1"}
+{"alimentacion": 2}
 
 Input:
 Pregunta: ¿Cómo te organizas con las comidas durante la semana? ¿Tienes cierta rutina o improvisas?
 Usuario: Casi siempre improviso, como lo que encuentro o pido comida rápida.
 Output:
-{"alimentacion": "3"}
+{"alimentacion": 3}
 
 Input:
 Pregunta: En cuanto a tu alimentación diaria, ¿cómo la describirías?
 Usuario: Suelo comer en la universidad algo rápido y no demasiado saludable.
 Output:
-{"alimentacion": "3"}
+{"alimentacion": 3}
 
 Input:
 Pregunta: ¿Podrías contarme un poco sobre tus hábitos alimenticios? ¿Son equilibrados o a veces caóticos por el ritmo de los estudios?
 Usuario: Suelo comer fuera de casa aunque me intento cuidar mucho en ese aspecto.
 Output:
-{"alimentacion": "1"}
+{"alimentacion": 1}
+
+Input:
+Pregunta: ¿Podrías contarme un poco sobre tus hábitos alimenticios? ¿Son equilibrados o a veces caóticos por el ritmo de los estudios?
+Usuario: Suelo comer un menú en la universidad o un bocadillo.
+Output:
+{"alimentacion": 2}
 
 Input:
 Pregunta: ¿Cómo describirías tu alimentación diaria?
 Usuario: A veces es caótica, pero trato de comer lo que puedo.
 Output:
-{"alimentacion": "2"}
+{"alimentacion": 2}
 
 Input:
 Pregunta: ¿Podrías contarme un poco sobre tus hábitos alimenticios? ¿Son equilibrados o a veces caóticos por el ritmo de los estudios?
 Usuario: Como mucho fuera de casa y debería cuidar más mi alimentación.
 Output:
-{"alimentacion": "3"}
+{"alimentacion": 3}
+
+Input:
+Pregunta: ¿Podrías contarme un poco sobre tus hábitos alimenticios? ¿Son equilibrados o a veces caóticos por el ritmo de los estudios?
+Usuario: Como un poco de todo.
+Output:
+{"alimentacion": 2}
+
+Input:
+Pregunta: ¿Podrías contarme un poco sobre tus hábitos alimenticios? ¿Son equilibrados o a veces caóticos por el ritmo de los estudios?
+Usuario: La verdad que tomo demasiado azúcar.
+Output:
+{"alimentacion": 3}
 
 Input:
 Pregunta: ¿En algún momento reciente has sentido que no tenías fuerzas para seguir adelante?

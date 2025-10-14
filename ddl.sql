@@ -1,14 +1,15 @@
-CREATE TABLE FormularioEstudiante (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    genero VARCHAR(50),
-    edad INT,
-    presionAcademica INT,
-    satisfaccionEstudios INT,
-    horasEstudio INT,
-    sueno VARCHAR(50),
-    alimentacion VARCHAR(50),
-    suicidio BOOLEAN,
-    estresFinanciero INT,
-    antecedentes BOOLEAN,
-    depresion BOOLEAN
+CREATE TABLE public.formularioestudiante (
+	id text NOT NULL,
+	genero text NOT NULL,
+	edad int8 NOT NULL,
+	presionAcademica int8 NOT NULL,
+	satisfaccionEstudios int8 NOT NULL,
+	horasEstudio int8 NOT NULL,
+	sueno text NOT NULL,
+	alimentacion text NOT NULL,
+	suicidio bool NOT NULL,
+	estresFinanciero int8 NOT NULL,
+	antecedentes bool NOT NULL,
+	depresion bool NOT NULL,
+	CONSTRAINT formularioestudiante_pkey PRIMARY KEY (id)
 );

@@ -52,6 +52,8 @@ Input: El usuario ha respondido: Soy una chica. Pregunta al usuario sus horas de
 De acuerdo, gracias por compartirlo. ¿Cuántas horas al día dedicas a tus actividades estudiantiles?
 Input: El usuario ha respondido: Soy un chico. Pregunta al usuario sus horas de estudio diarias.
 Gracias por compartirlo. De media, ¿cuántas horas sueles estudiar al día?
+Input: El usuario ha respondido: Soy un hombre. Pregunta al usuario sobre sus horas de estudio diarias.
+Me alegra poder conocernos mejor. De media, ¿cuántas horas sueles estudiar al día?
 
 Input: El usuario ha respondido: Estudio 9 horas diarias. Pregunta al usuario sobre su presión académica.
 Eso son muchas horas, es normal que acabes muy cansado y con falta de energía. ¿Te sientes abrumado por la cantidad de tareas o trabajos que tienes?

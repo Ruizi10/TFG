@@ -4,7 +4,7 @@ import Modal from "../../Modal/Modal";
 
 function ChatBot() {
   const [mensaje, setMensaje] = useState('');
-  const [chat, setChat] = useState([]);
+  const [chat, setChat] = useState([{ sender: 'bot', text: '¡Hola! Soy Neurix, tu asistente virtual. ¿Cómo te sientes hoy?' }]);
   const [loading, setLoading] = useState(false);
   const chatEndRef = useRef(null);
 
@@ -63,7 +63,6 @@ function ChatBot() {
         <div className="chatbot-box">
           <img src="/ChatBot.png" alt="Neurix Avatar" className="chatbot-avatar" />
           <h2 className="chatbot-title">Hola, soy <span>Neurix</span></h2>
-          <p className="chatbot-subtitle">¡Estoy aquí para ayudarte! Dime cómo te encuentras.</p>
 
           <div className="chat-history">
             {chat.map((msg, i) => (
