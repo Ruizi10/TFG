@@ -54,6 +54,10 @@ Input: El usuario ha respondido: Soy un chico. Pregunta al usuario sus horas de 
 Gracias por compartirlo. De media, ¿cuántas horas sueles estudiar al día?
 Input: El usuario ha respondido: Soy un hombre. Pregunta al usuario sobre sus horas de estudio diarias.
 Me alegra poder conocernos mejor. De media, ¿cuántas horas sueles estudiar al día?
+Input: El usuario ha respondido: Soy un hombre. Pregunta al usuario sus horas de estudio diarias.
+Gracias por compartirlo. ¿Cuántas horas al día sueles dedicar a tus estudios?
+Input: El usuario ha respondido: Soy una mujer. Pregunta al usuario sobre sus horas de estudio diarias.
+Perfecto, gracias por la información. ¿Cuántas horas al día sueles dedicar a tus estudios?
 
 Input: El usuario ha respondido: Estudio 9 horas diarias. Pregunta al usuario sobre su presión académica.
 Eso son muchas horas, es normal que acabes muy cansado y con falta de energía. ¿Te sientes abrumado por la cantidad de tareas o trabajos que tienes?
@@ -70,6 +74,8 @@ Aunque estudies pocas horas, puede que la presión siga siendo alta. También pu
 Input: El usuario ha respondido: Estudio 1 o 2 horas diarias. Pregunta al usuario sobre su presión académica.
 Entiendo que con solo 1 o 2 horas de estudio al día, puede ser difícil mantenerse al día. ¿Sientes que la carga académica es demasiado para ti en este momento?
 Input: El usuario ha respondido: Estudio 2 horas diarias. Pregunta al usuario sobre su presión académica.
+Veo que dedicas pocas horas a estudiar, pero eso no significa que sea malo, cada uno se organiza como cree conveniente. ¿Quieres contarme un poco más sobre cómo te sientes con tus estudios? ¿Sientes demasiada presión respecto a tus asignaturas?
+Input: El usuario ha respondido: Estudio 1 hora diaria. Pregunta al usuario sobre su presión académica.
 Veo que dedicas pocas horas a estudiar, pero eso no significa que sea malo, cada uno se organiza como cree conveniente. ¿Quieres contarme un poco más sobre cómo te sientes con tus estudios? ¿Sientes demasiada presión respecto a tus asignaturas?
 
 Input: El usuario ha respondido: Tengo muchas tareas y siento que no puedo con todo, se me hace cuesta arriba la carrera con tantas responsabilidades. Pregunta al usuario sobre su satisfacción en los estudios.
@@ -125,6 +131,8 @@ Input: El usuario ha respondido: Tengo una alimentación saludable y cuidada. Pr
 Me alegra saber que te cuidas y estás contento con tu alimentación, eso es positivo. Gracias por compartirlo. En ocasiones, las cosas se pueden poner tan cuesta arriba que sea común que surjan pensamientos personales muy difíciles. ¿En algún momento has sentido que no tenías fuerzas para seguir adelante?
 
 Input: El usuario ha respondido: No, nunca he tenido esos pensamientos. Pregunta al usuario sobre su estrés financiero.
+Me alegra saber que no has tenido esos pensamientos, eso es muy positivo. A veces, el estrés financiero puede afectar nuestro bienestar emocional. ¿Te afecta económicamente estar estudiando? ¿Sientes presión por ese lado?
+Input: El usuario ha respondido: No, no he pensado en eso. Pregunta al usuario sobre su estrés financiero.
 Me alegra saber que no has tenido esos pensamientos, eso es muy positivo. A veces, el estrés financiero puede afectar nuestro bienestar emocional. ¿Te afecta económicamente estar estudiando? ¿Sientes presión por ese lado?
 Input: El usuario ha respondido: No he tenido esos pensamientos. Pregunta al usuario sobre su estrés financiero.
 Es bueno escuchar que no has tenido esos pensamientos, eso es un buen indicio. A veces, el estrés financiero puede influir en cómo nos sentimos. ¿Te resulta difícil llegar a fin de mes o compaginar tus estudios con temas económicos?

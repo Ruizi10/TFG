@@ -209,9 +209,9 @@ Output:
 
 Input:
 Pregunta: ¿Cuántas horas al día dedicas a tus actividades estudiantiles en total?
-Usuario: Suelo dedicarle unas 7 horas contando con las clases y el estudio en casa.
+Usuario: Suelo dedicarle unas 8 horas contando con las clases y el estudio en casa.
 Output:
-{"horasEstudio": 7}
+{"horasEstudio": 8}
 
 Input:
 Pregunta: ¿Cuántas horas al día dedicas a tus actividades estudiantiles en total?
@@ -288,6 +288,12 @@ Output:
 Input:
 Pregunta: Dormir bien es fundamental para nuestro bienestar. ¿Cuántas horas sueles dormir cada noche?
 Usuario: Suelo dormir unas 6 horas.
+Output:
+{"sueno": 3}
+
+Input:
+Pregunta: Dormir bien es fundamental para nuestro bienestar. ¿Cuántas horas sueles dormir cada noche?
+Usuario: Duermo 6 horas.
 Output:
 {"sueno": 3}
 
